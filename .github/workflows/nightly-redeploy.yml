@@ -1,0 +1,21 @@
+name: Nightly Vercel Redeploy
+
+on:
+  schedule:
+    # Runs every night at midnight EST (adjust if you prefer another timezone)
+    - cron: "0 4 * * *"
+
+  # Optional: allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel deploy hook
+        env:
+          VERCEL_DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          echo "Triggering nightly redeploy at $(date -u)"
+          curl -fsS -X POST "$VERCEL_DEPLOY_HOOK"
+          echo "✅ Redeploy requested successfully."

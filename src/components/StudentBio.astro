@@ -1,0 +1,57 @@
+---
+interface Props {
+  studentId?: string;
+  className?: string;
+}
+
+const { studentId, className = "" } = Astro.props;
+
+// Load student bio data
+let studentBio = null;
+try {
+  const bioData = await import("../data/student-bios.json");
+  const allBios = bioData.default || [];
+
+  if (studentId) {
+    // Find bio for specific student
+    studentBio = allBios.find((bio) => bio.studentId === studentId);
+  } else {
+    // If no specific student, could show all bios or random one
+    studentBio = allBios[0]; // For now, just show first one
+  }
+} catch (error) {
+  console.log(`No bio data found for student ${studentId}`);
+}
+---
+
+{
+  studentBio && (
+    <div class={`student-bio ${className}`}>
+      {studentBio.bio && (
+        <div class="bio-text mb-4">
+          <p>{studentBio.bio}</p>
+        </div>
+      )}
+
+      {studentBio.links && studentBio.links.length > 0 && (
+        <ul class="student-links">
+          {studentBio.links.map((link, index) => (
+            <li key={index}>
+              <a href={link.url} target="_blank" rel="noopener noreferrer">
+                {link.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  )
+}
+
+{
+  !studentBio && (
+    <div class={`student-bio-placeholder ${className}`}>
+      <p class="text-sm opacity-70">No bio available yet.</p>
+    </div>
+  )
+}

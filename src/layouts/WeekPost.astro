@@ -1,0 +1,132 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "@/components/BaseHead.astro";
+import Footer from "@/components/Footer.astro";
+import Nav from "@/components/Nav.astro";
+import Analytics from "@vercel/analytics/astro";
+import GitHubEdit from "@/components/GitHubEdit.astro";
+import StudentResponses from "@/components/StudentResponses.astro";
+import { SITE_TITLE, SECTION_ID } from "@/config";
+import { marked } from "marked";
+
+type Props = CollectionEntry<"weeks">["data"] & {
+  compiledContent?: () => Promise<string>;
+};
+
+const { title, description, week, longDescription } = Astro.props;
+
+// Convert markdown to HTML using marked
+const longDescriptionHTML = longDescription
+  ? await marked(longDescription)
+  : null;
+
+// Get the compiled content from the slot and process it
+const rawContent = await Astro.slots.render("default");
+
+// Function to wrap content between h2 headings in divs
+function wrapContentSections(html: string): string {
+  // Split by h2 tags while preserving them
+  const h2Regex = /(<h2[^>]*>.*?<\/h2>)/gi;
+  const parts = html.split(h2Regex);
+
+  let result = "";
+  let currentSection = "";
+  let hasHeading = false;
+  let sectionIndex = 0;
+
+  for (let i = 0; i < parts.length; i++) {
+    const part = parts[i].trim();
+    if (!part) continue;
+
+    if (h2Regex.test(part)) {
+      // This is an h2 heading
+      if (currentSection) {
+        // Close previous section
+        const sectionClass = hasHeading
+          ? "content-section"
+          : "content-section intro-section";
+        result += `<div class="${sectionClass}">${currentSection}</div>\n`;
+      }
+
+      // Start new section with this heading
+      currentSection = part;
+      hasHeading = true;
+      sectionIndex++;
+    } else {
+      // This is content, add to current section
+      currentSection += part;
+    }
+  }
+
+  // Don't forget the last section
+  if (currentSection) {
+    const sectionClass = hasHeading
+      ? "content-section"
+      : "content-section intro-section";
+    // Extract section ID from h2 if it exists
+    let dataSection = "";
+    if (hasHeading) {
+      const h2Match = currentSection.match(/<h2[^>]*>(.*?)<\/h2>/i);
+      if (h2Match) {
+        const sectionId = h2Match[1]
+          .replace(/<[^>]*>/g, "") // Remove any HTML tags
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-|-$/g, "");
+        dataSection = ` data-section="${sectionId}"`;
+      }
+    }
+    result += `<div class="${sectionClass}"${dataSection}>${currentSection}</div>\n`;
+  }
+
+  return result;
+}
+
+const processedContent = wrapContentSections(rawContent);
+
+// Construct the GitHub file path
+const currentPath = Astro.url.pathname.replace(/^\/|\/$/g, "");
+const githubFilePath = `src/content/weeks/${currentPath}.md`;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead
+      title={`Week ${week}: ${title}`}
+      description={description}
+      image="/opengraph.jpg"
+    />
+  </head>
+  <body>
+    <header id="week-header">
+      <div>
+        <a href="/">
+          <h1 class="heading-3 !leading-normal">
+            {`${SITE_TITLE} (${SECTION_ID})`}
+          </h1>
+        </a>
+        <h2 class="heading-1">{`Week ${week}: ${title}`}</h2>
+        {
+          longDescriptionHTML && (
+            <div class="long-description" set:html={longDescriptionHTML} />
+          )
+        }
+        <nav class="weekly-schedule">
+          <Nav />
+        </nav>
+      </div>
+
+      <GitHubEdit filePath={githubFilePath} />
+    </header>
+
+    <main id="week-content" set:html={processedContent} />
+
+    <div class="border-t">
+      <StudentResponses week={week} />
+      <Footer />
+    </div>
+    <Analytics />
+    <script src="../scripts/page-animations.js"></script>
+    <script src="/scripts/external-links.js" is:inline></script>
+  </body>
+</html>

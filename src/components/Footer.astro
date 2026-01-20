@@ -1,0 +1,16 @@
+---
+import { SITE_AUTHOR, studentsWithId } from "@/config";
+
+// Get all student names sorted alphabetically by first name
+const studentNames = studentsWithId
+  .map((s) => `${s.firstName} ${s.lastName}`)
+  .sort()
+  .join(", ");
+---
+
+<footer>
+  <div>
+    &copy; {new Date().getFullYear()}
+    {SITE_AUTHOR}, {studentNames}. All rights reserved.
+  </div>
+</footer>

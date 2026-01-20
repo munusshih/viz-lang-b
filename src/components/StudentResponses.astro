@@ -1,0 +1,110 @@
+---
+import { studentsByEmail, SPECIAL_PROJECT_WEEKS } from "@/config";
+import { marked } from "marked";
+
+interface Props {
+  week: number;
+}
+
+const { week } = Astro.props;
+
+// Use the shared student mapping
+const studentMapping = studentsByEmail;
+
+// Load student data from the unified data file
+let studentData = [];
+try {
+  const dataModule = await import("../data/student-data.json");
+  studentData = dataModule.default || [];
+  console.log(`Loaded ${studentData.length} student entries from unified data`);
+} catch (error) {
+  console.warn("Error loading student data:", error);
+}
+
+// Filter responses for this specific week
+const weekResponses = studentData.filter((entry) => {
+  const assignment = entry.assignmentTitle;
+  if (!assignment) return false;
+
+  // Match patterns like "Week 1", "week 1", "Assignment 1", etc.
+  const weekMatch = assignment
+    .toLowerCase()
+    .match(/(?:week|assignment)\s*(\d+)/);
+  return weekMatch && parseInt(weekMatch[1]) === week;
+});
+
+// Map responses to include student names and only show entries with actual responses
+const responsesWithNames = weekResponses
+  .filter((entry) => entry.weeklyResponse && entry.weeklyResponse.trim()) // Only entries with responses
+  .map((entry) => {
+    const email = entry.studentEmail;
+    const student = studentMapping[email];
+
+    return {
+      email,
+      studentName: student
+        ? `${student.firstName} ${student.lastName}`
+        : "Unknown Student",
+      studentId: student ? student.studentId : null,
+      response: entry.weeklyResponse,
+      feedback: entry.teacherFeedback,
+      assignment: entry.assignmentTitle,
+    };
+  })
+  .sort((a, b) => a.studentName.localeCompare(b.studentName));
+
+// Check if this week is a special project week
+const specialProject = SPECIAL_PROJECT_WEEKS[week];
+---
+
+{
+  responsesWithNames.length > 0 ? (
+    <section class="student-responses p-4">
+      <h2 class="!mb-4">Class Notebook</h2>
+      <div class="responses-grid">
+        {responsesWithNames.map((response, index) => (
+          <div class="response-card" key={index}>
+            <h3 class="student-name">
+              {response.studentId ? (
+                <a
+                  href={`/students/${response.studentId}/`}
+                  rel="noopener noreferrer"
+                >
+                  {response.studentName}
+                </a>
+              ) : (
+                response.studentName
+              )}
+            </h3>
+            <blockquote class="response-text">{response.response}</blockquote>
+            {response.feedback && response.feedback.trim() && (
+              <div class="teacher-feedback mt-4 ml-4 ">
+                <h4 class="feedback-label font-bold">↳ Munus:</h4>
+                <div
+                  class="feedback-text"
+                  set:html={marked(response.feedback)}
+                />
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  ) : specialProject ? (
+    <div class="no-responses p-4">
+      <p class="mb-4">{specialProject.description}</p>
+      <a
+        href={specialProject.url}
+        class="btn-primary"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View {specialProject.projectName}
+      </a>
+    </div>
+  ) : (
+    <div class="no-responses p-4">
+      <p>No student responses available for this week yet.</p>
+    </div>
+  )
+}

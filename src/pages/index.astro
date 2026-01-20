@@ -1,0 +1,37 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Footer from "@/components/Footer.astro";
+import Nav from "@/components/Nav.astro";
+import CourseInfo from "@/components/CourseInfo.astro";
+import P5Background from "@/components/P5Background.astro";
+import {
+  SITE_DESCRIPTION,
+  SITE_TITLE,
+  SECTION_ID,
+  MARQUEE_TEXT,
+} from "@/config";
+import HallofFame from "@/components/HallofFame.astro";
+import Marquee from "@/components/Marquee.astro";
+---
+
+<Layout title={`${SITE_TITLE}: ${SECTION_ID}`} description={SITE_DESCRIPTION}>
+  <P5Background />
+
+  <header>
+    <div>
+      <h1>{`${SITE_TITLE}`}<br />{`(${SECTION_ID})`}</h1>
+      <p>{SITE_DESCRIPTION}</p>
+    </div>
+    <CourseInfo />
+  </header>
+
+  <main class="cutoff">
+    <Nav />
+  </main>
+
+  <div id="third-column" class="border-t">
+    <HallofFame />
+    <Footer />
+  </div>
+  <Marquee text={MARQUEE_TEXT} speed="slow" direction="right" />
+</Layout>

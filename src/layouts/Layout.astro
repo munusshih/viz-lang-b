@@ -16,7 +16,7 @@ const { title, description, image = "/opengraph.jpg" } = Astro.props;
   <head>
     <BaseHead title={title} description={description} image={image} />
   </head>
-  <body class="border-b">
+  <body>
     <slot />
     <Analytics />
     <script src="../scripts/page-animations.js"></script>

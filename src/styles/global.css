@@ -1,125 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Comfortaa:wght@300..700&display=swap');
 @import "tailwindcss";
-@import "./course-info.css";
-@import "./nav.css";
-@import "./accordion.css";
-@import "./week-content.css";
-@import "./marquee.css";
-@import "./github.css";
-@import "./tutorials.css";
-@import "./student-response.css";
 
-/* Color inversion based on system preference */
-@media (prefers-color-scheme: light) {
-
-    html,
-    #p5-background {
-        filter: invert(1) hue-rotate(180deg) saturate(4);
-    }
-
-    /* Preserve images and videos in their original form */
-    img,
-    video,
-    svg,
-    iframe,
-    canvas,
-    object,
-    embed {
-        filter: invert(1) hue-rotate(180deg) saturate(1);
-    }
-
-    /* Preserve specific components that should maintain their appearance */
-    .preserve-colors {
-        filter: invert(1) hue-rotate(180deg);
-    }
-
-    /* Adjust specific elements that might need fine-tuning */
-    .student-avatar {
-        filter: invert(1) hue-rotate(180deg);
-    }
-
-    /* Emoji and text symbols should remain unchanged */
-    [data-emoji],
-    .emoji {
-        filter: invert(1) hue-rotate(180deg);
-    }
+@font-face {
+    font-family: "Belgika";
+    src: url("/fonts/belgika-5th-webfont.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    font-size: 1px 18px;
 }
 
-@media (prefers-color-scheme: dark) {
-
-    /* Default dark mode - no inversion needed */
-    body {
-        filter: none;
-    }
-}
-
-/* Manual override classes for specific control */
-.force-light-mode {
-    filter: invert(1) hue-rotate(180deg);
-}
-
-.force-dark-mode {
-    filter: none;
+@font-face {
+    font-family: "Belgika";
+    src: url("/fonts/belgika-40th-webfont.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    font-size: 18px 200px;
 }
 
 /* Smooth transition when system preference changes */
 body {
     transition: filter 0.3s ease;
+    color: #000;
+    background: pink;
+    max-width: 1200px;
+    margin: auto;
+    @apply min-h-screen;
 }
 
 :root {
-    --title-font: "Boldonse", system-ui;
-    --body-font: "Source Serif 4", serif;
     --margin: 1rem;
     --padding: 1rem;
     --border-dotted: 1px solid #222;
 }
 
-/* Barba.js transitions */
-[data-barba="container"] {
-    position: relative;
-    will-change: transform, opacity;
-}
-
-.is-loading {
-    cursor: wait;
-}
-
-.is-loading * {
-    pointer-events: none;
-}
-
-/* Optional loading indicator */
-.is-loading::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #efefef, transparent);
-    animation: loading 1s ease-in-out infinite;
-    z-index: 9999;
-}
-
-@keyframes loading {
-    0% {
-        transform: translateX(-100%);
-    }
-
-    100% {
-        transform: translateX(100%);
-    }
-}
-
 html,
 body {
     scroll-behavior: smooth;
-}
-
-body {
-    background: #000;
-    color: #efefef;
 }
 
 h1,
@@ -135,88 +53,59 @@ li,
 table {
     font-size: 1rem;
     line-height: 1.25;
-    font-family: "Boldonse", system-ui;
 }
 
-h1,
-h2 {
-    font-size: 1.15rem;
-    margin-top: .5em;
-    margin-bottom: .5em;
-}
-
-* {
-    font-size: 1rem;
-    font-family: monospace !important;
-}
-
-/*
 h1,
 .heading-1 {
-    width: 100%;
-    font-weight: 700;
-    font-size: clamp(1.5rem, 4vw, 4vw);
-    line-height: 1.35;
-    @apply text-balance mb-8;
-}
-
-.smaller-h1 {
-    font-size: clamp(1.25rem, 3vw, 3vw);
-    line-height: 1.25;
-}
-
-h2.heading-1::before,
-h2.heading-3::before,
-h2.heading-4::before {
-    content: none;
+    font-size: 5rem;
+    text-align: center;
+    font-weight: 900;
+    @apply text-balance;
+    font-family: "Belgika", serif;
 }
 
 h2,
 .heading-2 {
-    font-size: clamp(1.2rem, 1.5vw, 1.5vw);
-    line-height: 1.5;
-    @apply mb-4;
-}
-
-h3,
-.heading-3 {
-    font-weight: 700;
-    font-size: clamp(1rem, 1.25vw, 1.25vw);
-    line-height: 1.25;
-}
-
-h4,
-.heading-4 {
-    font-weight: 700;
-    font-size: clamp(1rem, 1.25vw, 1.25vw);
-    line-height: 1.25;
-    font-family: "Source Serif 4", serif;
-} */
-
-h1 {
-    text-decoration: skyblue wavy underline;
-    text-underline-offset: 0.3em;
-    @apply text-balance mb-8;
+    font-size: 1.5rem;
+    font-weight: 900;
+    font-family: "Belgika", serif;
 }
 
 h2::before {
-    content: '↳';
-    color: pink;
+    content: '===';
     @apply pr-2;
+}
+
+h2::after {
+    content: '===';
+    @apply pl-2;
 }
 
 p,
 .body-text {
-    font-size: clamp(16px, 1vw, 18px);
+    font-size: clamp(16px, 1.1vw, 22px);
     line-height: 1.5;
-    font-family: "Source Serif 4", serif;
+    font-weight: 600;
     @apply max-w-prose text-pretty;
+    opacity: 0.67;
+    font-family: "Comfortaa", sans-serif;
 }
 
 ul li {
-    font-size: clamp(16px, 1vw, 18px);
-    font-family: "Source Serif 4", serif;
+    font-size: clamp(16px, 1.1vw, 22px);
+    line-height: 1.5;
     @apply max-w-prose text-pretty;
+    font-family: "Comfortaa", sans-serif;
+}
+
+.nav-list::before {
+    content: '{';
+    @apply pr-2;
+}
+
+.nav-list::after {
+    content: '}';
+    @apply pl-2;
 }
 
 details {
@@ -233,36 +122,20 @@ a[href^="http"]::after {
 }
 
 a:hover {
-    @apply opacity-70;
+    @apply border-b-2 border-black;
 }
-
-body {
-    @apply grid lg:grid-cols-3 min-h-screen;
-}
-
 
 header,
-main {
-    @apply p-[var(--margin)] border-t lg:border-r pb-20;
-}
-
-main {
-    background: #000;
-    /* Inline SVG noise (transparent so it tints the black) */
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='2' seed='4' stitchTiles='stitch'/><feComponentTransfer><feFuncR type='linear' slope='0.6'/><feFuncG type='linear' slope='0.6'/><feFuncB type='linear' slope='0.6'/></feComponentTransfer></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.2'/></svg>");
-    background-repeat: repeat;
-    background-size: 100px 100px;
-    background-blend-mode: normal;
-}
-
-header {
-    @apply flex flex-col gap-4;
+main,
+footer {
+    @apply p-4;
 }
 
 footer,
 .hall-of-fame {
-    font-family: var(--body-font);
     @apply p-[var(--padding)];
+    font-weight: 600;
+    font-family: "Comfortaa", sans-serif;
 }
 
 #student-page .hall-of-fame {
@@ -273,33 +146,15 @@ footer,
     @apply mb-4;
 }
 
-body {
-    position: relative;
-    opacity: 0;
-    background-color: black;
-
-    /* Inline SVG noise (transparent so it tints the black) */
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='2' seed='4' stitchTiles='stitch'/><feComponentTransfer><feFuncR type='linear' slope='0.6'/><feFuncG type='linear' slope='0.6'/><feFuncB type='linear' slope='0.6'/></feComponentTransfer></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.2'/></svg>");
-    background-repeat: repeat;
-    background-size: 100px 100px;
-    background-blend-mode: normal;
-
-
-}
-
 /* Make sure content is above background */
 body>* {
     position: relative;
     z-index: 1;
 }
 
-html {
-    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><g transform='scale(-1,-1) translate(-32,-32)'><text x='0' y='24' font-size='24' font-family=\"Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji\">✏️</text></g></svg>") 10 5, auto;
-}
-
 ::selection {
-    background: #fff;
-    color: #fff;
+    background: #000;
+    color: #000;
 }
 
 .btn-primary {

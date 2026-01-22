@@ -6,7 +6,7 @@
 // -----------------------------------------------------------------------------
 // Site Information
 // -----------------------------------------------------------------------------
-export const SITE_TITLE = "Graduate Studio: Technology A [Class Notebook]";
+export const SITE_TITLE = "Graduate Studio: Visual Language B [Class Notebook]";
 export const SITE_DESCRIPTION = "This site is our class notebook, a place to document and share what we learn.";
 
 // -----------------------------------------------------------------------------
@@ -14,10 +14,10 @@ export const SITE_DESCRIPTION = "This site is our class notebook, a place to doc
 // -----------------------------------------------------------------------------
 export const SCHOOL_NAME = "Pratt Institute";
 export const DEPARTMENT_NAME = "Graduate Communications Design";
-export const SECTION_ID = "DES-720A-02";
-export const SEMESTER = "Fall 2025";
-export const MEETING_TIMES = "5:00pm - 7:50pm, Every Tuesday";
-export const LOCATION = "Steuben Hall, Room 401";
+export const SECTION_ID = "DES-710B-02";
+export const SEMESTER = "Spring 2026";
+export const MEETING_TIMES = "5:30pm -8:20pm, Every Tuesday";
+export const LOCATION = "Pfizer Building, Room 720-01";
 
 // -----------------------------------------------------------------------------
 // Teacher Information
@@ -92,75 +92,75 @@ function generateStudentId(firstName: string, lastName: string): string {
 
 export const students: Student[] = [
     {
-        firstName: "Bella",
-        lastName: "Tsai",
-        email: "ytsai13@pratt.edu",
+        firstName: "Joy",
+        lastName: "Ko",
+        email: "jkox16@pratt.edu",
         website: null,
     },
     {
-        firstName: "Binjia",
-        lastName: "Li",
-        email: "blix21@pratt.edu",
+        firstName: "Han",
+        lastName: "Zhang",
+        email: "hzhang66@pratt.edu",
         website: null,
     },
     {
-        firstName: "Flora",
-        lastName: "Fang",
-        email: "zfang32@pratt.edu",
+        firstName: "Shuyu",
+        lastName: "Yi",
+        email: "syix12@pratt.edu",
         website: null,
     },
     {
-        firstName: "Kate",
-        lastName: "Chon",
-        email: "kchon351@pratt.edu",
+        firstName: "Yichi",
+        lastName: "Zhang",
+        email: "yzhan160@pratt.edu",
         website: null,
     },
     {
-        firstName: "Lina",
-        lastName: "Lee",
-        email: "jlee413@pratt.edu",
+        firstName: "Yanxuan",
+        lastName: "Lin",
+        email: "ylin62@pratt.edu",
         website: null,
     },
     {
-        firstName: "Lin",
-        lastName: "Kim",
-        email: "ckim109@pratt.edu",
+        firstName: "Jiayin",
+        lastName: "Chiang",
+        email: "jchia247@pratt.edu",
         website: null,
     },
     {
-        firstName: "Nancy",
-        lastName: "Scanlon",
-        email: "nscanl13@pratt.edu",
+        firstName: "Yiran",
+        lastName: "Hu",
+        email: "yhux107@pratt.edu",
         website: null,
     },
     {
-        firstName: "Richard",
-        lastName: "Fu",
-        email: "jfux34@pratt.edu",
+        firstName: "Lejun",
+        lastName: "Xi",
+        email: "lxix@pratt.edu",
         website: null,
     },
     {
-        firstName: "Sarena",
-        lastName: "Yadav",
-        email: "syadav4@pratt.edu",
+        firstName: "Xuan",
+        lastName: "Lu",
+        email: "xlux20@pratt.edu",
         website: null,
     },
     {
-        firstName: "Sreya",
-        lastName: "Mahsin",
-        email: "smahsin@pratt.edu",
+        firstName: "Yijun",
+        lastName: "Yu",
+        email: "yyux26@pratt.edu",
         website: null,
     },
     {
-        firstName: "Yiling",
-        lastName: "Yang",
-        email: "yyang82@pratt.edu",
+        firstName: "Vicky",
+        lastName: "Han",
+        email: "than114@pratt.edu",
         website: null,
     },
     {
-        firstName: "Zoe",
+        firstName: "Sha",
         lastName: "Liu",
-        email: "yliu124@pratt.edu",
+        email: "sliu55@pratt.edu",
         website: null,
     },
 ];

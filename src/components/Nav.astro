@@ -1,99 +1,15 @@
 ---
-import { getCollection } from "astro:content";
-import { marked } from "marked";
 
-const allPosts = (await getCollection("weeks"))
-  .filter((post) => !post.id.startsWith("_"))
-  .sort((a, b) => a.data.week - b.data.week);
-
-const currentSlug = Astro.url.pathname.replace(/^\/|\/$/g, "") || "index";
-const isIndex = currentSlug === "index";
-
-// Filter out the current page if not index
-// On index: show all weeks including week 0
-// On other pages: show other weeks but exclude week 0
-const posts = isIndex
-  ? allPosts.filter((post) => post.id !== currentSlug)
-  : allPosts.filter((post) => post.id !== currentSlug && post.data.week > 0);
-
-// Find the latest week number (excluding week 0)
-const latestWeek = Math.max(
-  ...allPosts.filter((post) => post.data.week > 0).map((post) => post.data.week)
-);
-
-// Process descriptions as markdown
-const processedPosts = await Promise.all(
-  posts.map(async (post) => ({
-    ...post,
-    processedDescription: post.data.description
-      ? await marked(post.data.description, { breaks: true })
-      : null,
-  }))
-);
 ---
 
-{
-  processedPosts.length > 0 ? (
-    <ul>
-      <h1 class="heading-1">{isIndex ? "Weekly Schedule" : "Other Weeks"}</h1>
-      {processedPosts.map((post) => (
-        <>
-          {isIndex &&
-            (() => {
-              switch (post.data.week) {
-                case 1:
-                  return <h1 class="smaller-h1">From Fixed to Variable</h1>;
-                case 6:
-                  return <h1 class="smaller-h1">Data As Material</h1>;
-                case 11:
-                  return <h1 class="smaller-h1">Cybernetics of Live Input</h1>;
-                default:
-                  return null;
-              }
-            })()}
-          <div class={isIndex ? "weekly-section" : ""} key={post.id}>
-            {post.data.week === 0 ? (
-              <li class="week-zero">
-                <h2 class="title">
-                  Week {post.data.week}: {post.data.title}
-                </h2>
-                {post.processedDescription && (
-                  <p class="description" set:html={post.processedDescription} />
-                )}
-              </li>
-            ) : // If a page explicitly opts out via `page: false` in frontmatter,
-            // render the week as plain text (not a clickable link) in the nav.
-            post.data.page === false ? (
-              <li class="no-link">
-                <h2 class="title">
-                  Week {post.data.week}: {post.data.title}
-                  {post.data.week === latestWeek && " ✨"}
-                </h2>
-                {post.processedDescription && isIndex && (
-                  <p class="description" set:html={post.processedDescription} />
-                )}
-              </li>
-            ) : (
-              <a href={`/${post.id}/`}>
-                <li>
-                  <h2 class="title">
-                    Week {post.data.week}: {post.data.title}
-                    {post.data.week === latestWeek && " ✨"}
-                  </h2>
-                  {post.processedDescription && isIndex && (
-                    <p
-                      class="description"
-                      set:html={post.processedDescription}
-                    />
-                  )}
-                </li>
-              </a>
-            )}
-          </div>
-        </>
-      ))}
-    </ul>
-  ) : (
-    <p>No other weeks available yet. Check back soon!</p>
-  )
-}
+<nav>
+  <ul
+    class="nav-list flex flex-row justify-center gap-6 py-4 px-8 font-extrabold mb-8"
+  >
+    <li><a href="/">Home</a></li>
+    <li><a href="/schedule/">Schedule</a></li>
+    <li><a href="/resources/">Resources</a></li>
+    <li><a href="/projects/">Projects</a></li>
+    <li><a href="/collectives/">Collectives</a></li>
+  </ul>
+</nav>

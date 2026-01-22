@@ -1,0 +1,183 @@
+---
+interface Props {
+  align?: "left" | "right" | "center";
+  pointDirection?:
+    | "bottom-left"
+    | "bottom-center"
+    | "bottom-right"
+    | "top-left"
+    | "top-center"
+    | "top-right";
+}
+
+const { align = "center", pointDirection = "bottom-center" } = Astro.props;
+---
+
+<div class={`speech-bubble speech-bubble-${pointDirection} text-${align}`}>
+  <slot />
+</div>
+
+<style>
+  .speech-bubble {
+    position: relative;
+    margin: auto;
+    margin-top: 2rem;
+    border: 2px solid #000;
+    border-radius: 20rem;
+    background: #fff;
+    padding: 1.5rem;
+    width: fit-content;
+    max-width: 600px;
+    font-size: clamp(16px, 1.1vw, 22px);
+    line-height: 1.5;
+    font-family: "Comfortaa", sans-serif;
+  }
+
+  /* Triangle pointer using pseudo-element */
+  .speech-bubble::after {
+    position: absolute;
+    border-style: solid;
+    width: 0;
+    height: 0;
+    content: "";
+  }
+
+  /* Bottom-left pointer */
+  .speech-bubble-bottom-left::after {
+    bottom: -20px;
+    left: 30px;
+    border-width: 20px 20px 0 0;
+    border-color: #000 transparent transparent transparent;
+  }
+
+  .speech-bubble-bottom-left::before {
+    position: absolute;
+    bottom: -16px;
+    left: 32px;
+    border-width: 18px 18px 0 0;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+    width: 0;
+    height: 0;
+    content: "";
+  }
+
+  /* Bottom-right pointer */
+  .speech-bubble-bottom-right::after {
+    right: 30px;
+    bottom: -20px;
+    border-width: 20px 0 0 20px;
+    border-color: #000 transparent transparent transparent;
+  }
+
+  .speech-bubble-bottom-right::before {
+    position: absolute;
+    right: 32px;
+    bottom: -16px;
+    border-width: 18px 0 0 18px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+    width: 0;
+    height: 0;
+    content: "";
+  }
+
+  /* Top-left pointer */
+  .speech-bubble-top-left::after {
+    top: -20px;
+    left: 30px;
+    border-width: 0 20px 20px 0;
+    border-color: transparent transparent #000 transparent;
+  }
+
+  .speech-bubble-top-left::before {
+    position: absolute;
+    top: -16px;
+    left: 32px;
+    border-width: 0 18px 18px 0;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+    width: 0;
+    height: 0;
+    content: "";
+  }
+
+  /* Top-right pointer */
+  .speech-bubble-top-right::after {
+    top: -20px;
+    right: 30px;
+    border-width: 0 0 20px 20px;
+    border-color: transparent transparent #000 transparent;
+  }
+
+  .speech-bubble-top-right::before {
+    position: absolute;
+    top: -16px;
+    right: 32px;
+    border-width: 0 0 18px 18px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+    width: 0;
+    height: 0;
+    content: "";
+  }
+
+  /* Bottom-center pointer */
+  .speech-bubble-bottom-center::after {
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 20px 10px 0 10px;
+    border-color: #000 transparent transparent transparent;
+  }
+
+  .speech-bubble-bottom-center::before {
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 18px 9px 0 9px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+    width: 0;
+    height: 0;
+    content: "";
+  }
+
+  /* Top-center pointer */
+  .speech-bubble-top-center::after {
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 10px 20px 10px;
+    border-color: transparent transparent #000 transparent;
+  }
+
+  .speech-bubble-top-center::before {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 9px 18px 9px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+    width: 0;
+    height: 0;
+    content: "";
+  }
+
+  .text-left {
+    text-align: left;
+  }
+
+  .text-right {
+    margin-left: auto;
+    text-align: right;
+  }
+
+  .text-center {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+</style>

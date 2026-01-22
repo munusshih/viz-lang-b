@@ -3,35 +3,34 @@ import Layout from "@/layouts/Layout.astro";
 import Footer from "@/components/Footer.astro";
 import Nav from "@/components/Nav.astro";
 import CourseInfo from "@/components/CourseInfo.astro";
-import P5Background from "@/components/P5Background.astro";
-import {
-  SITE_DESCRIPTION,
-  SITE_TITLE,
-  SECTION_ID,
-  MARQUEE_TEXT,
-} from "@/config";
-import HallofFame from "@/components/HallofFame.astro";
-import Marquee from "@/components/Marquee.astro";
+import { SITE_DESCRIPTION, SITE_TITLE, SECTION_ID } from "@/config";
+import SpeechBubble from "@/components/SpeechBubble.astro";
+import Colophon from "@/components/Colophon.astro";
 ---
 
 <Layout title={`${SITE_TITLE}: ${SECTION_ID}`} description={SITE_DESCRIPTION}>
-  <P5Background />
-
   <header>
-    <div>
-      <h1>{`${SITE_TITLE}`}<br />{`(${SECTION_ID})`}</h1>
-      <p>{SITE_DESCRIPTION}</p>
+    <div class="course-info flex flex-col">
+      <CourseInfo />
+      <h1>{SITE_TITLE}<br />{SECTION_ID}</h1>
     </div>
-    <CourseInfo />
   </header>
-
-  <main class="cutoff">
+  <main>
     <Nav />
+    <SpeechBubble align="left" pointDirection="bottom-center">
+      Your text here - can be as long as you need!
+    </SpeechBubble>
+    <iframe
+      src="./P5Background"
+      title="P5 Background Animation"
+      class="w-full max-w-[600px] m-auto !aspect-video"></iframe>
   </main>
+  <Colophon />
+  <Footer />
 
-  <div id="third-column" class="border-t">
+  <!-- <div id="third-column">
     <HallofFame />
-    <Footer />
+
   </div>
-  <Marquee text={MARQUEE_TEXT} speed="slow" direction="right" />
+  <Marquee text={MARQUEE_TEXT} speed="slow" direction="right" /> -->
 </Layout>

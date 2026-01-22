@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/p5.party@latest/dist/p5.party.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@davepagurek/p5.filterrenderer@0.0.18/p5.filterRenderer.min.js"></script>
+  <meta charset="utf-8" />
+</head>
+
+<body>
+  <main></main>
+  <script>
+    let me;
+    let guests;
+    let img;
+    let gap = Math.abs(Math.random() * 50) + 250;
+
+    function preload() {
+      partyConnect("wss://demoserver.p5party.org", "chairs_happy");
+      img = loadImage('/assets/texture.webp');
+
+      // Default chair parameters + placeholder position
+      me = partyLoadMyShared({
+        seatW: random(30, 50) * 2,
+        seatD: random(40, 80) * 2,
+        seatH: 6 * 2,
+        backH: random(35, 55) * 2,
+        legH: random(30, 60) * 2,
+        legW: 5 * 2,
+        x: 0,
+        y: 0,
+        z: 0,
+      });
+
+      guests = partyLoadGuestShareds();
+    }
+
+    function setup() {
+      createCanvas(windowWidth, windowHeight, WEBGL);
+      // partyToggleInfo(true);
+
+      let camRadius = windowWidth; // <-- reduce this to move camera closer
+      let camY = -60; // height of the camera
+      let camAngle = -100; // slowly rotate around scene
+      let camX = camRadius * cos(camAngle);
+      let camZ = camRadius * sin(camAngle);
+      camera(camX, camY, camZ, 0, 0, 0, 0, 1, 0); // look at center
+
+      noStroke();
+      strokeWeight(1);
+    }
+
+    function draw() {
+      clear();
+      ambientLight(0);
+      translate(0, 50, 0);
+
+      let camRadius = windowWidth + guests.length * 100; // <-- reduce this to move camera closer
+      let camY = -60; // height of the camera
+      let camAngle = -100 + frameCount * 0.002; // slowly rotate around scene
+      let camX = camRadius * cos(camAngle);
+      let camZ = camRadius * sin(camAngle);
+      camera(camX, camY, camZ, 0, 0, 0, 0, 1, 0); // look at center
+      orbitControl();
+
+      let total = 1 + guests.length;
+      let radius = (gap * total) / TWO_PI;
+
+      // build a list of everyone (me first)
+      let people = [me, ...guests];
+
+      // compute max leg height so chairs sit on same floor
+      let maxLegH = Math.max(...people.map((p) => p.legH));
+
+      for (let i = 0; i < people.length; i++) {
+        let p = people[i];
+
+        let angle = (i / total) * TWO_PI;
+        p.x = radius * cos(angle);
+        p.z = radius * sin(angle);
+        p.y = maxLegH - p.legH;
+
+        push();
+        translate(p.x, p.y, p.z);
+        rotateY(atan2(-p.x, -p.z) + PI);
+        drawChair(p);
+        pop();
+      }
+    }
+
+    function drawChair(chair) {
+      ambientMaterial('DodgerBlue');
+      // texture(img)
+
+      let { seatW, seatD, seatH, backH, legH, legW } = chair;
+
+      push();
+      translate(0, -seatH / 2, 0);
+      box(seatW, seatH, seatD);
+      pop();
+
+      push();
+      translate(0, -seatH / 2 - backH / 2, seatD / 2 - 3);
+      box(seatW, backH, 6);
+      pop();
+
+      let lx = seatW / 2 - 5;
+      let lz = seatD / 2 - 5;
+
+      push();
+      translate(-lx, legH / 2, -lz);
+      box(legW, legH, legW);
+      pop();
+      push();
+      translate(lx, legH / 2, -lz);
+      box(legW, legH, legW);
+      pop();
+      push();
+      translate(-lx, legH / 2, lz);
+      box(legW, legH, legW);
+      pop();
+      push();
+      translate(lx, legH / 2, lz);
+      box(legW, legH, legW);
+      pop();
+    }
+
+    function windowResized() {
+      resizeCanvas(windowWidth, windowHeight);
+    }
+  </script>
+
+  <style>
+    body {
+      overflow: hidden;
+      margin: 0 !important;
+    }
+
+    html {
+      overflow: hidden;
+    }
+  </style>
+</body>
+
+</html>

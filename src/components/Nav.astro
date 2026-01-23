@@ -1,15 +1,40 @@
 ---
-
+const currentPath = Astro.url.pathname;
 ---
 
 <nav>
   <ul
     class="nav-list flex flex-row justify-center gap-6 py-4 px-8 font-extrabold mb-8"
   >
-    <li><a href="/">Home</a></li>
-    <li><a href="/schedule/">Schedule</a></li>
-    <li><a href="/resources/">Resources</a></li>
-    <li><a href="/projects/">Projects</a></li>
-    <li><a href="/collectives/">Collectives</a></li>
+    <li><a href="/" class:list={{ active: currentPath === "/" }}>Home</a></li>
+    <li>
+      <a
+        href="/schedule/"
+        class:list={{ active: currentPath === "/schedule/" }}>Schedule</a
+      >
+    </li>
+    <li>
+      <a
+        href="/resources/"
+        class:list={{ active: currentPath === "/resources/" }}>Resources</a
+      >
+    </li>
+    <li>
+      <a href="/projects/" class:list={{ active: currentPath === "/projects/" }}
+        >Projects</a
+      >
+    </li>
+    <li>
+      <a
+        href="/collectives/"
+        class:list={{ active: currentPath === "/collectives/" }}>Collectives</a
+      >
+    </li>
   </ul>
 </nav>
+
+<style>
+  .active {
+    text-decoration: underline;
+  }
+</style>

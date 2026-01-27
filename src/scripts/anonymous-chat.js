@@ -1,16 +1,14 @@
 import { getFirebaseDb } from "@/utils/firebase";
 import { onChildAdded, push, ref, serverTimestamp } from "firebase/database";
 
-const root = document.querySelector<HTMLElement>("[data-anon-chat]");
+const root = document.querySelector("[data-anon-chat]");
 if (!root) {
   console.warn("Anonymous chat root not found");
 } else {
-  const messagesEl = root.querySelector<HTMLElement>("[data-anon-messages]");
-  const form = root.querySelector<HTMLFormElement>("[data-anon-form]");
-  const nameEl = root.querySelector<HTMLElement>("[data-anon-name]");
-  const refreshBtn = root.querySelector<HTMLButtonElement>(
-    "[data-anon-refresh]",
-  );
+  const messagesEl = root.querySelector("[data-anon-messages]");
+  const form = root.querySelector("[data-anon-form]");
+  const nameEl = root.querySelector("[data-anon-name]");
+  const refreshBtn = root.querySelector("[data-anon-refresh]");
 
   const adjectives = [
     "Sleepy",
@@ -53,7 +51,7 @@ if (!root) {
     return fresh;
   }
 
-  function setNameDisplay(name: string) {
+  function setNameDisplay(name) {
     if (nameEl) nameEl.textContent = name;
   }
 
@@ -76,24 +74,23 @@ if (!root) {
   if (!db) {
     if (messagesEl) {
       messagesEl.innerHTML =
-        "<div class=\"anon-chat__message\">Firebase not configured.</div>";
+        '<div class="anon-chat__message">Firebase not configured.</div>';
     }
   } else {
-
     const chatRef = ref(db, "chat/messages");
 
     onChildAdded(chatRef, (snapshot) => {
       const data = snapshot.val();
       if (!data || !messagesEl) return;
-    const wrapper = document.createElement("div");
-    wrapper.className = "anon-chat__message";
-    const main = document.createElement("div");
-    main.className = "anon-chat__message-main";
-    const title = document.createElement("strong");
-    title.textContent = data.name || "anonymous";
-    const body = document.createElement("span");
-    body.textContent = `: ${data.text || ""}`;
-    const meta = document.createElement("span");
+      const wrapper = document.createElement("div");
+      wrapper.className = "anon-chat__message";
+      const main = document.createElement("div");
+      main.className = "anon-chat__message-main";
+      const title = document.createElement("strong");
+      title.textContent = data.name || "anonymous";
+      const body = document.createElement("span");
+      body.textContent = `: ${data.text || ""}`;
+      const meta = document.createElement("span");
       if (data.createdAt) {
         const time = new Date(data.createdAt).toLocaleTimeString([], {
           hour: "2-digit",
@@ -102,18 +99,17 @@ if (!root) {
         meta.textContent = time;
       }
 
-    main.appendChild(title);
-    main.appendChild(body);
-    wrapper.appendChild(main);
-    if (meta.textContent) wrapper.appendChild(meta);
+      main.appendChild(title);
+      main.appendChild(body);
+      wrapper.appendChild(main);
+      if (meta.textContent) wrapper.appendChild(meta);
       messagesEl.appendChild(wrapper);
       messagesEl.scrollTop = messagesEl.scrollHeight;
     });
 
     form?.addEventListener("submit", async (event) => {
       event.preventDefault();
-      const input =
-        form.querySelector<HTMLInputElement>("input[name='message']");
+      const input = form.querySelector("input[name='message']");
       if (!input) return;
       const text = input.value.trim();
       if (!text) return;

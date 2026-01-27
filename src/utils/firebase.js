@@ -1,5 +1,5 @@
 import { getAnalytics, isSupported } from "firebase/analytics";
-import { initializeApp, getApps, type FirebaseApp } from "firebase/app";
+import { getApps, initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
@@ -13,14 +13,11 @@ const firebaseConfig = {
   measurementId: import.meta.env.PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-const app: FirebaseApp = getApps().length
-  ? getApps()[0]
-  : initializeApp(firebaseConfig);
+const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
 
 const db = getDatabase(app);
 
-let analyticsPromise: Promise<ReturnType<typeof getAnalytics> | null> | null =
-  null;
+let analyticsPromise = null;
 
 export function getFirebaseApp() {
   return app;
@@ -33,9 +30,7 @@ export function getFirebaseDb() {
 export async function getFirebaseAnalytics() {
   if (typeof window === "undefined") return null;
   if (!analyticsPromise) {
-    analyticsPromise = isSupported().then((ok) =>
-      ok ? getAnalytics(app) : null,
-    );
+    analyticsPromise = isSupported().then((ok) => (ok ? getAnalytics(app) : null));
   }
   return analyticsPromise;
 }

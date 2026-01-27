@@ -21,7 +21,15 @@
   </form>
 </section>
 
-<script type="module" src={Astro.resolve("../scripts/anonymous-chat.js")}></script>
+<script>
+  import { initAnonymousChat } from "../scripts/anonymous-chat.js";
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => initAnonymousChat());
+  } else {
+    initAnonymousChat();
+  }
+</script>
 
 <style>
   .anon-chat {

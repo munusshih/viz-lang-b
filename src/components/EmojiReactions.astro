@@ -44,7 +44,15 @@ const emojiDefs: EmojiDef[] = [
   </div>
 </section>
 
-<script type="module" src={Astro.resolve("../scripts/emoji-reactions.js")}></script>
+<script>
+  import { initEmojiReactions } from "../scripts/emoji-reactions.js";
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => initEmojiReactions());
+  } else {
+    initEmojiReactions();
+  }
+</script>
 
 <style>
   .emoji-reactions {

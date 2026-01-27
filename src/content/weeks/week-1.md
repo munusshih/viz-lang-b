@@ -10,7 +10,7 @@ week: 1
 
 **Due:** Feb 3, 2026
 
-1. Prepare a physical notebook you like as your self-reflection journal for this course. It can be any size or style, as long as you feel comfortable using it regularly. Bring it to class. (See page [Projects](../projects/) for more guidance)
+1. Prepare a physical notebook you like as your self-reflection journal for this course. Throughout the semester, you are expected to keep a notebook or one centralized place to house all of the reflection writing, creative processing, in-class activities, and external reading and research notes. You will use your notebook as source material for your group projects as well as your final reflection at the end of the semester. It can be any size or style, as long as you feel comfortable using it regularly. Bring it to class.
 2. Read [Access Intimacy: The Missing Link](https://leavingevidence.wordpress.com/2011/05/05/access-intimacy-the-missing-link/) by Mia Mingus.
 3. Write at least a one-page reflection after reading the essay. Consider the following prompts to guide your reflection:
    1. Have you had experiences with access intimacy?

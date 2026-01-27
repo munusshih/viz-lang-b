@@ -1,4 +1,4 @@
-import { getFirebaseDb } from "@/utils/firebase";
+import { getFirebaseDb } from "../utils/firebase";
 import { onChildAdded, push, ref, serverTimestamp } from "firebase/database";
 
 const root = document.querySelector("[data-anon-chat]");

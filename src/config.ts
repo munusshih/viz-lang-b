@@ -1,7 +1,7 @@
 // =============================================================================
 // SITE CONFIGURATION
 // =============================================================================
-// All configuration for the Tech-A 2025 class website in one place
+// All configuration for the viz-lang-b 2026 class website in one place
 
 // -----------------------------------------------------------------------------
 // Site Information
@@ -16,7 +16,7 @@ export const SCHOOL_NAME = "Pratt Institute";
 export const DEPARTMENT_NAME = "Graduate Communications Design";
 export const SECTION_ID = "DES-710B-02";
 export const SEMESTER = "Spring 2026";
-export const MEETING_TIMES = "5:30pm -8:20pm, Every Tuesday";
+export const MEETING_TIMES = "5:00pm - 7:50pm, Every Tuesday";
 export const LOCATION = "Pfizer Building, Room 720-01";
 
 // -----------------------------------------------------------------------------
@@ -29,27 +29,6 @@ export const EMAIL = "munus.shih@pratt.edu";
 // Marquee Text
 // -----------------------------------------------------------------------------
 export const MARQUEE_TEXT = "Reminder to upload all your assignments and process! • Enjoy your break • Don't forget to check out the tutorials and resources • ";
-
-// -----------------------------------------------------------------------------
-// Special Project Weeks
-// -----------------------------------------------------------------------------
-// Configure weeks that showcase special projects instead of regular responses
-export const SPECIAL_PROJECT_WEEKS: Record<number, {
-    projectName: string;
-    description: string;
-    url: string;
-}> = {
-    5: {
-        projectName: "View Project Archive",
-        description: "The students are presenting their Project 1: Flexible Manifesto this week. View all student work on the main class site:",
-        url: "https://tech-a.designfuture.space/work"
-    },
-    11: {
-        projectName: "View Project Archive",
-        description: "The students are presenting their Project 2: Data Sculpture this week. View all student work on the main class site:",
-        url: "https://tech-a.designfuture.space/work"
-    }
-};
 
 // -----------------------------------------------------------------------------
 // Google Sheets Configuration

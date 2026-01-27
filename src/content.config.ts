@@ -15,6 +15,8 @@ const weeks = defineCollection({
       // If set to `false` the content can still be rendered in listings or embedded views.
       page: z.boolean().optional(),
       week: z.number(), // Week number for ordering
+      image: z.string().optional(), // Optional image path
+      imageMeta: z.string().optional(), // Optional image metadata/caption
       heroImage: image().optional(),
     }),
 });

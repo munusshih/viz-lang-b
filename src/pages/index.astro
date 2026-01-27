@@ -6,6 +6,7 @@ import CourseInfo from "@/components/CourseInfo.astro";
 import { SITE_DESCRIPTION, SITE_TITLE, SECTION_ID } from "@/config";
 import SpeechBubble from "@/components/SpeechBubble.astro";
 import Colophon from "@/components/Colophon.astro";
+// import QuickStart from "@/components/QuickStart.astro";
 ---
 
 <Layout title={`${SITE_TITLE}: ${SECTION_ID}`} description={SITE_DESCRIPTION}>
@@ -26,6 +27,7 @@ import Colophon from "@/components/Colophon.astro";
       title="P5 Background Animation"
       class="w-full max-w-[600px] m-auto !aspect-video"></iframe>
   </main>
+  <!-- <QuickStart /> -->
   <Colophon />
   <Footer />
 
@@ -34,4 +36,5 @@ import Colophon from "@/components/Colophon.astro";
 
   </div>
   <Marquee text={MARQUEE_TEXT} speed="slow" direction="right" /> -->
+
 </Layout>

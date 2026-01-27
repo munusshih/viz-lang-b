@@ -9,32 +9,31 @@ const currentPath = Astro.url.pathname;
     <li><a href="/" class:list={{ active: currentPath === "/" }}>Home</a></li>
     <li>
       <a
-        href="/schedule/"
-        class:list={{ active: currentPath === "/schedule/" }}>Schedule</a
+        href="/this-week/"
+        class:list={{ active: currentPath === "/this-week/" }}>This Week</a
       >
     </li>
-    <li>
-      <a
-        href="/resources/"
-        class:list={{ active: currentPath === "/resources/" }}>Resources</a
+    <!-- <li>
+      <a href="/library/" class:list={{ active: currentPath === "/library/" }}
+        >Library</a
       >
-    </li>
-    <li>
+    </li> -->
+    <!-- <li>
       <a href="/projects/" class:list={{ active: currentPath === "/projects/" }}
         >Projects</a
       >
-    </li>
-    <li>
+    </li> -->
+    <!-- <li>
       <a
         href="/collectives/"
         class:list={{ active: currentPath === "/collectives/" }}>Collectives</a
       >
-    </li>
+    </li> -->
   </ul>
 </nav>
 
 <style>
   .active {
-    text-decoration: underline;
+    opacity: 0.3;
   }
 </style>

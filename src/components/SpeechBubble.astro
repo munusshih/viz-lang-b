@@ -25,12 +25,16 @@ const { align = "center", pointDirection = "bottom-center" } = Astro.props;
     border: 2px solid #000;
     border-radius: 20rem;
     background: #fff;
-    padding: 1.5rem;
+    padding: 1.5rem 4rem;
     width: fit-content;
     max-width: 600px;
     font-size: clamp(16px, 1.1vw, 22px);
     line-height: 1.5;
     font-family: "Comfortaa", sans-serif;
+  }
+
+  .speech-bubble :global(a) {
+    border-bottom: 2px dotted black;
   }
 
   /* Triangle pointer using pseudo-element */

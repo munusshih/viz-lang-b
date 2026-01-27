@@ -1,0 +1,279 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Footer from "@/components/Footer.astro";
+import Nav from "@/components/Nav.astro";
+import CourseInfo from "@/components/CourseInfo.astro";
+import { SITE_DESCRIPTION, SITE_TITLE, SECTION_ID } from "@/config";
+import Colophon from "@/components/Colophon.astro";
+import library from "@/data/library.json";
+---
+
+<Layout
+  title={`Library - ${SITE_TITLE}: ${SECTION_ID}`}
+  description={SITE_DESCRIPTION}
+>
+  <header>
+    <div class="course-info flex flex-col">
+      <CourseInfo />
+      <h1>Library &<br />Resources</h1>
+    </div>
+  </header>
+  <main class="library-content">
+    <Nav />
+
+    <div class="intro">
+      <p>{library.intro}</p>
+    </div>
+
+    {
+      library.sections.map((section) => (
+        <section class="library-section">
+          <h2>{section.title}</h2>
+
+          {section.intro && <p class="section-intro">{section.intro}</p>}
+
+          {section.items && (
+            <div class="bookshelf">
+              {section.items.map((item) => (
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="book-item"
+                >
+                  {item.thumbnail ? (
+                    <div class="book-cover">
+                      <img
+                        src={item.thumbnail}
+                        alt={item.title}
+                        loading="lazy"
+                      />
+                    </div>
+                  ) : (
+                    <div class="book-cover book-placeholder">
+                      <span class="book-title">{item.title}</span>
+                    </div>
+                  )}
+                  <div class="book-info">
+                    <div class="book-title-text">{item.title}</div>
+                    {item.author && (
+                      <div class="book-author">{item.author}</div>
+                    )}
+                    {item.publisher && (
+                      <div class="book-publisher">{item.publisher}</div>
+                    )}
+                  </div>
+                </a>
+              ))}
+            </div>
+          )}
+
+          {section.subsections &&
+            section.subsections.map((subsection) => (
+              <div class="subsection">
+                <h3>{subsection.title}</h3>
+                <div class="bookshelf">
+                  {subsection.items.map((item) => (
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="book-item"
+                    >
+                      {item.thumbnail ? (
+                        <div class="book-cover">
+                          <img
+                            src={item.thumbnail}
+                            alt={item.title}
+                            loading="lazy"
+                          />
+                        </div>
+                      ) : (
+                        <div class="book-cover book-placeholder">
+                          <span class="book-title">{item.title}</span>
+                        </div>
+                      )}
+                      <div class="book-info">
+                        <div class="book-title-text">{item.title}</div>
+                        {item.author && (
+                          <div class="book-author">{item.author}</div>
+                        )}
+                        {item.publisher && (
+                          <div class="book-publisher">{item.publisher}</div>
+                        )}
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
+        </section>
+      ))
+    }
+  </main>
+  <Colophon />
+  <Footer />
+</Layout>
+
+<style>
+  .library-content {
+    margin: 0 auto;
+    padding: 2rem;
+    max-width: 1400px;
+  }
+
+  .intro {
+    margin: 2rem 0 3rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .library-section {
+    margin-bottom: 4rem;
+  }
+
+  .library-section h2 {
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 2rem;
+  }
+
+  .section-intro {
+    opacity: 0.8;
+    margin: 1rem 0 2rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .subsection {
+    margin-top: 2.5rem;
+  }
+
+  .subsection h3 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+
+  .bookshelf {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem 1.5rem;
+    margin: 2rem 0;
+  }
+
+  @media (max-width: 1024px) {
+    .bookshelf {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .bookshelf {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem 1rem;
+    }
+  }
+
+  .book-item {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .book-item:hover {
+    transform: translateY(-4px);
+  }
+
+  .book-cover {
+    transition: box-shadow 0.2s ease;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    aspect-ratio: 2/3; /* 4x6 book ratio */
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .book-item:hover .book-cover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .book-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .book-placeholder {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 1rem;
+  }
+
+  .book-placeholder::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background:
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 100%
+      ),
+      repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.03) 0px,
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+    pointer-events: none;
+    content: "";
+  }
+
+  .book-placeholder .book-title {
+    position: relative;
+    z-index: 1;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    word-break: break-word;
+  }
+
+  .book-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .book-title-text {
+    color: #333;
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+
+  .book-author {
+    color: #666;
+    font-size: 0.85rem;
+  }
+
+  .book-publisher {
+    color: #999;
+    font-size: 0.8rem;
+  }
+</style>

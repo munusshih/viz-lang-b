@@ -1,0 +1,219 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Footer from "@/components/Footer.astro";
+import Nav from "@/components/Nav.astro";
+import CourseInfo from "@/components/CourseInfo.astro";
+import SpeechBuble from "@/components/SpeechBubble.astro";
+import { SITE_DESCRIPTION, SITE_TITLE, SECTION_ID } from "@/config";
+import { getCollection } from "astro:content";
+import { marked } from "marked";
+import { wrapH2Sections } from "@/utils/processContent";
+
+// Get all weeks and sort by week number
+const allWeeks = await getCollection("weeks");
+const sortedWeeks = allWeeks
+  .filter((week) => week.data.page !== false)
+  .sort((a, b) => a.data.week - b.data.week);
+
+// Get the latest week (highest week number)
+const latestWeek = sortedWeeks[sortedWeeks.length - 1];
+
+// Process the markdown body content
+const rawHtml = await marked.parse(latestWeek.body);
+const processedBody = wrapH2Sections(rawHtml);
+---
+
+<Layout
+  title={`This Week - ${SITE_TITLE}: ${SECTION_ID}`}
+  description={SITE_DESCRIPTION}
+>
+  <header>
+    <div class="course-info flex flex-col">
+      <CourseInfo />
+      <h1>Week {latestWeek.data.week}: {latestWeek.data.title}</h1>
+    </div>
+  </header>
+  <main>
+    <Nav />
+    {
+      latestWeek && (
+        <section class="this-week">
+          {latestWeek.data.image && (
+            <div class="week-header">
+              <img
+                src={`/${latestWeek.data.image}`}
+                alt={`Illustration for Week ${latestWeek.data.week}`}
+              />
+              {latestWeek.data.imageMeta && (
+                <SpeechBuble
+                  class="image-meta"
+                  pointDirection="top-center"
+                  set:html={marked.parse(latestWeek.data.imageMeta)}
+                />
+              )}
+            </div>
+          )}
+
+          {latestWeek.data.longDescription && (
+            <div
+              class="week-content"
+              set:html={marked.parse(latestWeek.data.longDescription)}
+            />
+          )}
+
+          <div class="week-body" set:html={processedBody} />
+        </section>
+      )
+    }
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .week-header {
+    margin-bottom: 2rem;
+  }
+
+  .week-header img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .image-meta {
+    opacity: 0.7;
+    margin-top: 0.5rem;
+    font-style: italic;
+    font-size: 0.9rem;
+  }
+
+  .week-content,
+  .week-body {
+    margin: 2rem 0;
+    line-height: 1.8;
+  }
+
+  /* Two-column layout for sections */
+  .week-body :global(.sections-container) {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .week-body :global(.content-section) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 2rem;
+    border-top: 1px solid #000;
+    padding-top: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .week-body :global(.content-section) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .week-content :global(h2),
+  .week-body :global(h2) {
+    font-weight: 900 !important;
+    font-size: 1.75rem;
+  }
+
+  /* Left column: title */
+  .week-body :global(.content-section > h2) {
+    grid-column: 1;
+  }
+
+  /* Right column: all other content */
+  .week-body :global(.content-section > :not(h2)) {
+    grid-column: 2;
+  }
+
+  .week-content :global(h3),
+  .week-body :global(h3) {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    font-size: 1.25rem;
+  }
+
+  .week-content :global(img) {
+    margin: 1.5rem 0;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .week-content :global(a),
+  .week-body :global(a) {
+    border-bottom: 2px dotted black;
+  }
+
+  .week-content :global(a:hover),
+  .week-body :global(a:hover) {
+    opacity: 0.7;
+  }
+
+  /* Base styles for unordered lists */
+  .week-content :global(ul),
+  .week-body :global(ul) {
+    padding-left: 1rem;
+    list-style: none;
+  }
+
+  /* Base styles for ordered lists */
+  .week-content :global(ol),
+  .week-body :global(ol) {
+    padding-left: 1rem;
+    list-style-type: decimal;
+    /* don't remove markers entirely! */
+  }
+
+  .week-content :global(ol ol),
+  .week-body :global(ol ol) {
+    padding-left: 1rem;
+    list-style-type: lower-alpha;
+    /* don't remove markers entirely! */
+  }
+
+  /* Arrows only for top-level unordered lists */
+  .week-content :global(ul > li)::marker,
+  .week-body :global(ul > li)::marker {
+    content: "→ ";
+    font-weight: 400;
+  }
+
+  /* Ensure top-level ol uses decimal */
+  .week-content :global(ol > li)::marker,
+  .week-body :global(ol > li)::marker {
+    content: normal;
+    list-style-type: decimal; /* use default numbering */
+  }
+  /* Optional: spacing for all list items */
+  .week-content :global(li),
+  .week-body :global(li) {
+    display: list-item;
+    margin: 0.5rem 0;
+  }
+
+  .week-link-container {
+    margin-top: 3rem;
+    border-top: 1px solid #ddd;
+    padding-top: 2rem;
+  }
+
+  .view-full-link {
+    display: inline-block;
+    transition: opacity 0.2s ease;
+    border-radius: 4px;
+    background: #000;
+    padding: 0.75rem 1.5rem;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .view-full-link:hover {
+    opacity: 0.8;
+  }
+</style>

@@ -1,0 +1,309 @@
+{
+    "intro": "Our course library prioritizes materials that emerge from independent and cooperative publishers and organizations. Many of these publishers offer examples of how collective practices operate in the world. Please feel free to add materials to our shared library below.",
+    "sections": [
+        {
+            "title": "Required Reading",
+            "items": [
+                {
+                    "title": "Mapping our Roles in Social Justice Ecosystems Reflection Guide",
+                    "url": "https://buildingmovement.org/wp-content/uploads/2022/04/Ecosystem-Guide-April-2022.pdf",
+                    "author": "Deepa Iyer and Movement Building Project",
+                    "thumbnail": "https://books.google.com/books/content?id=JX1DzwEACAAJ&printsec=frontcover&img=1&zoom=2&source=gbs_api"
+                },
+                {
+                    "title": "Conditional Design: A Manifesto for Designers and Artists",
+                    "url": "https://conditionaldesign.org/manifesto/",
+                    "thumbnail": null
+                },
+                {
+                    "title": "Handbook in Motion",
+                    "url": "https://monoskop.org/images/4/4e/Forti_Simone_Handbook_in_Motion.pdf",
+                    "author": "Simone Forti",
+                    "thumbnail": "https://books.google.com/books/content?id=D6cbtAEACAAJ&printsec=frontcover&img=1&zoom=2&source=gbs_api"
+                },
+                {
+                    "title": "How Do Designers Collaborate?",
+                    "url": "https://drive.google.com/open?id=11oAmzxfdVKau-t9E7l1mfEomuZhgpxtX&usp=drive_fs",
+                    "author": "John Casserta",
+                    "thumbnail": null
+                },
+                {
+                    "title": "Toolkit for Cooperative, Collective, and Collaborative Cultural Work",
+                    "url": "https://toolkit.press/",
+                    "author": "Press Press and Institute for Expanded Research",
+                    "thumbnail": "thumbnail.png"
+                },
+                {
+                    "title": "Together: The Rituals, Pleasures and Politics of Cooperation",
+                    "url": "https://drive.google.com/open?id=10HqwpstTBDmqw6bCQJSnorZXQYOR40bt&usp=drive_fs",
+                    "author": "Richard Sennet",
+                    "thumbnail": "https://books.google.com/books/content?id=aKc9W7fn2AMC&printsec=frontcover&img=1&zoom=2&edge=curl&source=gbs_api"
+                },
+                {
+                    "title": "Soft Talk: Thoughts on Critique",
+                    "url": "https://drive.google.com/open?id=1o9FLqhE8Lj746WMJYTL5VPNfLXnHiu1U&usp=drive_fs",
+                    "author": "Leslie Dick",
+                    "thumbnail": "https://books.google.com/books/content?id=Ol34b2EmlMIC&printsec=frontcover&img=1&zoom=2&edge=curl&source=gbs_api"
+                }
+            ]
+        },
+        {
+            "title": "Suggested Reading",
+            "subsections": [
+                {
+                    "title": "Access, Disability & Care",
+                    "items": [
+                        {
+                            "title": "Access Intimacy: The Missing Link",
+                            "url": "https://leavingevidence.wordpress.com/2011/05/05/access-intimacy-the-missing-link/",
+                            "author": "Mia Mingus",
+                            "thumbnail": "https://leavingevidence.wordpress.com/wp-content/uploads/2011/05/planting-the-seeds-abstrct.jpg"
+                        },
+                        {
+                            "title": "Accessibility in the Arts: A Promise and a Practice",
+                            "url": "https://promiseandpractice.art/",
+                            "author": "Carolyn Lazard",
+                            "publisher": "Recess Art",
+                            "thumbnail": null
+                        },
+                        {
+                            "title": "How to be a Person in the Age of Autoimmunity",
+                            "url": "https://projectrowhouses.org/howtobeapersonintheageofautoimmunity/",
+                            "author": "Carolyn Lazard",
+                            "publisher": "Project Row Houses",
+                            "thumbnail": "https://projectrowhouses.org/wp-content/uploads/2017/03/0106I6B3841.jpg"
+                        }
+                    ]
+                },
+                {
+                    "title": "Critical Theory & Social Justice",
+                    "items": [
+                        {
+                            "title": "Combahee River Collective Statement",
+                            "url": "https://www.blackpast.org/african-american-history/combahee-river-collective-statement-1977/",
+                            "thumbnail": "https://books.google.com/books/content?id=YC0FAQAAIAAJ&printsec=frontcover&img=1&zoom=2&source=gbs_api"
+                        },
+                        {
+                            "title": "Theory as Liberatory Practice",
+                            "url": "http://www.uwyo.edu/aded5050/5050unit12/theory%20as%20liberatory%20prac.pdf",
+                            "author": "bell hooks",
+                            "thumbnail": null
+                        },
+                        {
+                            "title": "Practicing Everyday Abolition",
+                            "url": "https://abolitionistfutures.com/latest-news/practising-everyday-abolition",
+                            "author": "Sarah Lamble",
+                            "thumbnail": "http://static1.squarespace.com/static/5e35a537763e8d15ff28a167/t/5f3d77e96517625afe6d95ae/1597863922006/Transformative%2BJustice_Practising%2BEveryday%2BAbolition_LATEST.jpg?format=1500w"
+                        },
+                        {
+                            "title": "White Supremacy Culture - Still Here",
+                            "url": "https://drive.google.com/file/d/1XR_7M_9qa64zZ00_JyFVTAjmjVU-uSz8/view",
+                            "author": "Tema Okun",
+                            "thumbnail": null
+                        },
+                        {
+                            "title": "bell hooks & john a. powell: Belonging Through Connection",
+                            "url": "https://www.youtube.com/watch?v=0sX7fqIU4gQ",
+                            "publisher": "Institute for Othering and Belonging at University of California, Berkeley",
+                            "thumbnail": "https://i.ytimg.com/vi/0sX7fqIU4gQ/maxresdefault.jpg"
+                        }
+                    ]
+                },
+                {
+                    "title": "Community & Solidarity",
+                    "items": [
+                        {
+                            "title": "Decolonizing Nonviolent Communication",
+                            "url": "https://drive.google.com/file/d/11g8y07knPkITPTiibkAhSV-S06Wde7uT/view?usp=drive_link",
+                            "author": "meendachi",
+                            "publisher": "Co-Co Press",
+                            "thumbnail": null
+                        },
+                        {
+                            "title": "Solidarity Economy: Key Concepts and Issues",
+                            "url": "https://base.socioeco.org/docs/miller_solidarity_economy_key_issues_2010-1.pdf",
+                            "author": "Ethan Miller",
+                            "publisher": "Anarchist Library",
+                            "thumbnail": "https://books.google.com/books/content?id=a7FYAAAAYAAJ&printsec=frontcover&img=1&zoom=2&source=gbs_api"
+                        },
+                        {
+                            "title": "Mutual Aid: Building Solidarity in this Crisis (and the Next)",
+                            "url": "https://drive.google.com/file/d/1mWhwvnfgpCFjCfaUsJU1s0bL8rEQgL1K/view?usp=sharing",
+                            "author": "Dean Spade",
+                            "publisher": "Verso Books",
+                            "note": "Introduction: Three Key Elements of Mutual Aid and Solidarity Not Charity!",
+                            "thumbnail": "https://books.google.com/books/content?id=KlzrDwAAQBAJ&printsec=frontcover&img=1&zoom=2&edge=curl&source=gbs_api"
+                        },
+                        {
+                            "title": "Anti-Oppressive Facilitation for Democratic Process: Making Meetings Awesome for Everyone",
+                            "url": "https://arts-campout-2015.sites.olt.ubc.ca/files/2019/02/AORTA_Facilitation-Resource-Sheet-JUNE2017.pdf",
+                            "author": "AORTA",
+                            "thumbnail": null
+                        }
+                    ]
+                },
+                {
+                    "title": "Art & Activism",
+                    "items": [
+                        {
+                            "title": "After Silence: A History of Aids through its Images",
+                            "url": "https://www.perlego.com/book/550702/after-silence-pdf",
+                            "author": "Avram Finkelstein",
+                            "thumbnail": "https://img.perlego.com/book-covers/550702/9780520968028_300_450.webp"
+                        },
+                        {
+                            "title": "United in Anger: ACT UP",
+                            "url": "https://www.youtube.com/watch?v=MrAzU79PBVM",
+                            "type": "documentary",
+                            "thumbnail": "https://i.ytimg.com/vi/MrAzU79PBVM/hqdefault.jpg?sqp=-oaymwEmCOADEOgC8quKqQMa8AEB-AH-BIAC4AOKAgwIABABGGUgWShPMA8=&amp;rs=AOn4CLCKv6TxbbKX3S7iyrUJwhQGGCupww"
+                        },
+                        {
+                            "title": "Urgency Reader(s)",
+                            "url": "https://queer.archive.work/publications/reader1/index.html",
+                            "author": "Queer.Archive.Work",
+                            "thumbnail": "https://raw.githubusercontent.com/soulellis/queer.archive.work/master/about/about1.jpg"
+                        },
+                        {
+                            "title": "Walk Out: A Brief History of Student-Organized Protests",
+                            "url": "https://walkout.interferencearchive.org/",
+                            "publisher": "Interference Archive",
+                            "thumbnail": null
+                        },
+                        {
+                            "title": "Undoing Borders: A Queer Manifesto",
+                            "url": "https://undoingbordersblog.files.wordpress.com/2011/09/undoing-borders-letter-size.pdf",
+                            "author": "SF Chapter of Pride at Work / HAVOQ",
+                            "thumbnail": null
+                        }
+                    ]
+                },
+                {
+                    "title": "Art History & Publishing",
+                    "items": [
+                        {
+                            "title": "How to Make a Happening",
+                            "url": "https://primaryinformation.org/files/allan-kaprow-how-to-make-a-happening.pdf",
+                            "author": "Allan Kaprow",
+                            "publisher": "Primary Information",
+                            "thumbnail": "https://archive.org/services/img/lecture-how-to-make-a-happening-allan-kaprow"
+                        },
+                        {
+                            "title": "The Anti-Catalogue",
+                            "url": "https://primaryinformation.org/product/an-anti-catalog/",
+                            "author": "Artists Meeting for Cultural Change",
+                            "publisher": "Primary Information",
+                            "thumbnail": "https://primaryinformation.org/pi/wp-content/uploads/2013/11/AntiCatalog-11-e1396117602497.jpg"
+                        },
+                        {
+                            "title": "The Flue",
+                            "url": "https://primaryinformation.org/product-category/flue/",
+                            "author": "Franklin Furnace Archive",
+                            "publisher": "Primary Information",
+                            "thumbnail": "https://covers.openlibrary.org/b/id/10931246-L.jpg"
+                        },
+                        {
+                            "title": "Dispersion",
+                            "url": "http://www.distributedhistory.com/Dispersion2016.pdf",
+                            "author": "Seth Price",
+                            "thumbnail": "https://books.google.com/books/content?id=TL5yPgAACAAJ&printsec=frontcover&img=1&zoom=2&source=gbs_api"
+                        },
+                        {
+                            "title": "Urgent Publishing",
+                            "url": "https://centerforbookarts.org/cabc/urgent-publishing-after-the-artists-book-making-public-in-movements-towards-liberation",
+                            "author": "Paul Soullelis",
+                            "publisher": "Center for Book Arts and Printed Matter",
+                            "type": "lecture",
+                            "thumbnail": "https://archive.org/services/img/urgent-publishing-error-re.-ley-lines-episode-one-episode-eight-part-four-by-kri"
+                        }
+                    ]
+                },
+                {
+                    "title": "Design & Capitalism",
+                    "items": [
+                        {
+                            "title": "CAPS LOCK: How Capitalism Took Hold Of Graphic Design And How To Escape From It",
+                            "url": "https://drive.google.com/file/d/1SZErpfN1YnSqvSzr19f27ODvgG_5z8sJ/view?usp=sharing",
+                            "author": "Ruben Pater",
+                            "thumbnail": null
+                        },
+                        {
+                            "title": "Publics & Counterpublics",
+                            "url": "https://drive.google.com/file/d/1ERgCLwLtR7SR3d8aTZfpMOGiBY3OKxFM/view?usp=sharing",
+                            "author": "Michael Warner",
+                            "publisher": "Zone Books",
+                            "thumbnail": "https://books.google.com/books/content?id=L_syEAAAQBAJ&printsec=frontcover&img=1&zoom=2&edge=curl&source=gbs_api"
+                        }
+                    ]
+                },
+                {
+                    "title": "Black Experimental Writing",
+                    "items": [
+                        {
+                            "title": "Freedom Time: The Poetics and Politics of Black Experimental Writing",
+                            "url": "https://www.are.na/block/18352662",
+                            "author": "Anthony Reed",
+                            "thumbnail": "https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIxODM1MjY2Mi9vcmlnaW5hbF8zODJmNjNlNmU0NGFjZTJjMjAyMjEwMDQtNC1zdmo5eGgucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoxMjAwLCJoZWlnaHQiOjYzMCwiZml0IjoiY292ZXIiLCJ3aXRob3V0RW5sYXJnZW1lbnQiOnRydWV9LCJ3ZWJwIjp7InF1YWxpdHkiOjgwfSwianBlZyI6eyJxdWFsaXR5Ijo4MH0sInJvdGF0ZSI6bnVsbH19"
+                        },
+                        {
+                            "title": "Renegade Poetics",
+                            "url": "https://transaestheticsfoundationdotorg.files.wordpress.com/2016/01/shockleyevie-renegade_poetics-introduction.pdf",
+                            "author": "Evie Shockley",
+                            "thumbnail": "https://books.google.com/books/content?id=8uCsyK8IyIAC&printsec=frontcover&img=1&zoom=2&edge=curl&source=gbs_api"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Field Trips",
+            "intro": "Students organize themselves and their collaborative peer groups to visit 2-3 of the following art spaces, exhibitions, and libraries (or kindred spaces you may recommend) sometime throughout the semester. Some of these spaces are open regularly, while others may be open for specific events.",
+            "subsections": [
+                {
+                    "title": "Libraries & Archives",
+                    "items": [
+                        {
+                            "title": "Pratt Library",
+                            "url": "https://library.pratt.edu/",
+                            "thumbnail": "https://library.pratt.edu/img/heading1.jpg"
+                        },
+                        {
+                            "title": "New York Public Library",
+                            "url": "https://www.nypl.org/",
+                            "thumbnail": "https://books.google.com/books/content?id=27gqAQAAIAAJ&printsec=frontcover&img=1&zoom=2&edge=curl&source=gbs_api"
+                        },
+                        {
+                            "title": "Interference Archive",
+                            "url": "https://interferencearchive.org/",
+                            "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Interference_Archive_poster.jpg/500px-Interference_Archive_poster.jpg"
+                        },
+                        {
+                            "title": "Bluestockings Bookstore",
+                            "url": "https://bluestockings.com/",
+                            "thumbnail": "https://cdn1.bookmanager.com/i/8604649//logo_navbar.png?mtime=1615223910"
+                        }
+                    ]
+                },
+                {
+                    "title": "Art Spaces & Publishing",
+                    "items": [
+                        {
+                            "title": "Wendy's Subway",
+                            "url": "https://www.wendyssubway.com/",
+                            "thumbnail": null
+                        },
+                        {
+                            "title": "Printed Matter",
+                            "url": "https://www.printedmatter.org/",
+                            "thumbnail": "https://www.filepicker.io/api/file/MInXTyEISmLxRHWOQs8A"
+                        },
+                        {
+                            "title": "Poetry Project",
+                            "url": "https://www.poetryproject.org/",
+                            "thumbnail": "https://www.poetryproject.org/assets/images/the-poetry-project.png"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

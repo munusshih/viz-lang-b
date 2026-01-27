@@ -5,7 +5,6 @@ import Footer from "@/components/Footer.astro";
 import Nav from "@/components/Nav.astro";
 import Analytics from "@vercel/analytics/astro";
 import GitHubEdit from "@/components/GitHubEdit.astro";
-import StudentResponses from "@/components/StudentResponses.astro";
 import { SITE_TITLE, SECTION_ID } from "@/config";
 import { marked } from "marked";
 
@@ -122,11 +121,9 @@ const githubFilePath = `src/content/weeks/${currentPath}.md`;
     <main id="week-content" set:html={processedContent} />
 
     <div class="border-t">
-      <StudentResponses week={week} />
       <Footer />
     </div>
     <Analytics />
-    <script src="../scripts/page-animations.js"></script>
     <script src="/scripts/external-links.js" is:inline></script>
   </body>
 </html>

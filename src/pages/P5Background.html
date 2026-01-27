@@ -2,6 +2,11 @@
 <html lang="en">
 
 <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap"
+    rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.js"></script>
   <script
     src="https://cdn.jsdelivr.net/npm/p5.party@latest/dist/p5.party.js"></script>
@@ -12,6 +17,20 @@
 
 <body>
   <main></main>
+  <script>
+    if (window.p5 && window.p5.prototype) {
+      window.p5.prototype._loadingScreen = function () {
+        this.clear();
+        this.background(246, 243, 238);
+        this.fill(26, 26, 26);
+        this.noStroke();
+        this.textAlign(this.CENTER, this.CENTER);
+        this.textFont("Comfortaa");
+        this.textSize(14);
+        this.text("Loading...", this.width / 2, this.height / 2);
+      };
+    }
+  </script>
   <script>
     let me;
     let guests;
@@ -79,13 +98,28 @@
         let p = people[i];
 
         let angle = (i / total) * TWO_PI;
-        p.x = radius * cos(angle);
-        p.z = radius * sin(angle);
-        p.y = maxLegH - p.legH;
+        let newX = radius * cos(angle);
+        let newZ = radius * sin(angle);
+        let newY = maxLegH - p.legH;
+
+        // Only update shared object if it's ready (for me) or if it's a guest
+        if (i === 0 && partyIsHost()) {
+          // Only update if the shared object is ready
+          if (me && me._isReady) {
+            p.x = newX;
+            p.z = newZ;
+            p.y = newY;
+          }
+        } else if (i > 0) {
+          // Guests can be updated
+          p.x = newX;
+          p.z = newZ;
+          p.y = newY;
+        }
 
         push();
-        translate(p.x, p.y, p.z);
-        rotateY(atan2(-p.x, -p.z) + PI);
+        translate(newX, newY, newZ);
+        rotateY(atan2(-newX, -newZ) + PI);
         drawChair(p);
         pop();
       }
@@ -137,6 +171,7 @@
     body {
       overflow: hidden;
       margin: 0 !important;
+      font-family: "Comfortaa", sans-serif;
     }
 
     html {

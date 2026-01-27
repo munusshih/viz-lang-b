@@ -83,16 +83,16 @@ h2::after {
 
 p,
 .body-text {
-    font-size: clamp(16px, 1.1vw, 22px);
+    font-size: clamp(16px, 1vw, 16px);
     line-height: 1.5;
     font-weight: 600;
     @apply max-w-prose text-pretty;
-    opacity: 0.67;
     font-family: "Comfortaa", sans-serif;
 }
 
-ul li {
-    font-size: clamp(16px, 1.1vw, 22px);
+ul li,
+ol li {
+    font-size: clamp(16px, 1vw, 16px);
     line-height: 1.5;
     @apply max-w-prose text-pretty;
     font-family: "Comfortaa", sans-serif;

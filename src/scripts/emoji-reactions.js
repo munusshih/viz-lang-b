@@ -1,4 +1,4 @@
-import { getFirebaseDb } from "../utils/firebase";
+import { getFirebaseDb } from "@/utils/firebase";
 import { onValue, ref, runTransaction } from "firebase/database";
 
 const roots = Array.from(

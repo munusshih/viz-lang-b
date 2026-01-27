@@ -1,7 +1,3 @@
----
-import chatScriptUrl from "@/scripts/anonymous-chat.js?url";
----
-
 <section class="anon-chat" data-anon-chat>
   <div class="anon-chat__meta">
     <span>Your username:</span>
@@ -25,7 +21,9 @@ import chatScriptUrl from "@/scripts/anonymous-chat.js?url";
   </form>
 </section>
 
-<script type="module" src={chatScriptUrl}></script>
+<script type="module">
+  import "@/scripts/anonymous-chat.js";
+</script>
 
 <style>
   .anon-chat {

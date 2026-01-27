@@ -9,7 +9,6 @@ interface Props {
   pageKey: string;
 }
 
-import emojiReactionsUrl from "@/scripts/emoji-reactions.js?url";
 const { pageKey } = Astro.props;
 
 const emojiDefs: EmojiDef[] = [
@@ -45,7 +44,9 @@ const emojiDefs: EmojiDef[] = [
   </div>
 </section>
 
-<script type="module" src={emojiReactionsUrl}></script>
+<script type="module">
+  import "@/scripts/emoji-reactions.js";
+</script>
 
 <style>
   .emoji-reactions {

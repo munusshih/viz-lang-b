@@ -1,0 +1,113 @@
+---
+interface EmojiDef {
+  id: string;
+  label: string;
+  text: string;
+}
+
+interface Props {
+  pageKey: string;
+}
+
+import emojiReactionsUrl from "@/scripts/emoji-reactions.ts?url";
+const { pageKey } = Astro.props;
+
+const emojiDefs: EmojiDef[] = [
+  { id: "inspired", label: "❤️‍🔥", text: "Inspired" },
+  { id: "brainy", label: "🧠", text: "Brainy" },
+  { id: "useful", label: "🧳", text: "Useful" },
+  { id: "informative", label: "📘", text: "Informative" },
+  { id: "confused", label: "😕", text: "Confused" },
+];
+---
+
+<section class="emoji-reactions" data-emoji-reactions data-page-key={pageKey}>
+  <p class="emoji-reactions__label">
+    How did this week's content land for you?
+  </p>
+  <div class="emoji-reactions__list">
+    {
+      emojiDefs.map((emoji) => (
+        <button
+          type="button"
+          class="emoji-reactions__button"
+          data-emoji-id={emoji.id}
+          aria-label={`React with ${emoji.text}`}
+        >
+          <span class="emoji-reactions__emoji">{emoji.label}</span>
+          <span class="emoji-reactions__text">{emoji.text}</span>
+          <span class="emoji-reactions__count" data-count>
+            0
+          </span>
+        </button>
+      ))
+    }
+  </div>
+</section>
+
+<script type="module" src={emojiReactionsUrl}></script>
+
+<style>
+  .emoji-reactions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 0 auto 1.5rem;
+    border-top: 1px solid #000;
+    padding-top: 2rem;
+    width: 100%;
+    font-family: "Comfortaa", sans-serif;
+  }
+
+  .emoji-reactions__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .emoji-reactions__button {
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    gap: 0.4rem;
+    transition:
+      transform 120ms ease,
+      box-shadow 120ms ease;
+    cursor: pointer;
+    border: none;
+    border-radius: 999px;
+    padding: 0.35rem 0.7rem;
+  }
+
+  .emoji-reactions__button:not(:last-child)::after {
+    position: absolute;
+    right: -0.6rem;
+    content: "/";
+    color: rgba(0, 0, 0, 0.45);
+  }
+
+  .emoji-reactions__button:hover {
+    transform: translateY(-1px);
+  }
+
+  .emoji-reactions__button.is-clicked {
+    transform: none;
+    background: #000;
+    color: #fff;
+  }
+
+  .emoji-reactions__emoji {
+    font-size: 1rem;
+  }
+
+  .emoji-reactions__text {
+    opacity: 0.8;
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+
+  .emoji-reactions__count {
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+</style>

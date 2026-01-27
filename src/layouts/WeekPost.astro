@@ -5,6 +5,7 @@ import Footer from "@/components/Footer.astro";
 import Nav from "@/components/Nav.astro";
 import Analytics from "@vercel/analytics/astro";
 import GitHubEdit from "@/components/GitHubEdit.astro";
+import EmojiReactions from "@/components/EmojiReactions.astro";
 import { SITE_TITLE, SECTION_ID } from "@/config";
 import { marked } from "marked";
 
@@ -118,6 +119,7 @@ const githubFilePath = `src/content/weeks/${currentPath}.md`;
       <GitHubEdit filePath={githubFilePath} />
     </header>
 
+    <EmojiReactions pageKey={currentPath || `week-${week}`} />
     <main id="week-content" set:html={processedContent} />
 
     <div class="border-t">

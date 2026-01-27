@@ -77,7 +77,7 @@
       ambientLight(0);
       translate(0, 50, 0);
 
-      let camRadius = windowWidth + guests.length * 100; // <-- reduce this to move camera closer
+      let camRadius = 300000 / windowWidth + guests.length * 100; // <-- reduce this to move camera closer
       let camY = -60; // height of the camera
       let camAngle = -100 + frameCount * 0.002; // slowly rotate around scene
       let camX = camRadius * cos(camAngle);

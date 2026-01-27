@@ -5,7 +5,7 @@ import colophonRaw from "../content/colophon.md?raw";
 const content = marked.parse(colophonRaw);
 ---
 
-<section class="colophon receipt p-8 my-8">
+<section class="colophon receipt p-8 my-8 mx-4 md:mx-auto">
   <h2>Colophon</h2>
   <div set:html={content} />
 </section>

@@ -4,6 +4,7 @@ import Footer from "@/components/Footer.astro";
 import Nav from "@/components/Nav.astro";
 import CourseInfo from "@/components/CourseInfo.astro";
 import SpeechBuble from "@/components/SpeechBubble.astro";
+import EmojiReactions from "@/components/EmojiReactions.astro";
 import { SITE_DESCRIPTION, SITE_TITLE, SECTION_ID } from "@/config";
 import { getCollection } from "astro:content";
 import { marked } from "marked";
@@ -53,6 +54,7 @@ const processedBody = wrapH2Sections(rawHtml);
               )}
             </div>
           )}
+          <EmojiReactions pageKey={`week-${latestWeek.data.week}`} />
 
           {latestWeek.data.longDescription && (
             <div
@@ -111,6 +113,7 @@ const processedBody = wrapH2Sections(rawHtml);
   @media (max-width: 768px) {
     .week-body :global(.content-section) {
       grid-template-columns: 1fr;
+      gap: 1rem;
     }
   }
 
@@ -128,6 +131,12 @@ const processedBody = wrapH2Sections(rawHtml);
   /* Right column: all other content */
   .week-body :global(.content-section > :not(h2)) {
     grid-column: 2;
+  }
+
+  @media (max-width: 768px) {
+    .week-body :global(.content-section > :not(h2)) {
+      grid-column: 1;
+    }
   }
 
   .week-content :global(h3),

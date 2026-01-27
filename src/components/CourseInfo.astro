@@ -10,7 +10,9 @@ import {
 } from "@/config";
 ---
 
-<div class="grid lg:grid-cols-4 gap-4 md:gap-10 mb-10 border-b border-t py-8">
+<div
+  class="course-info grid lg:grid-cols-4 gap-4 md:gap-10 mb-10 border-b border-t py-8"
+>
   <section class="course-header">
     <p>{SCHOOL_NAME}</p>
     <p>{DEPARTMENT_NAME}</p>
@@ -46,3 +48,8 @@ import {
     </ul>
   </section>
 </div>
+<style>
+  .course-info :global(a) {
+    border-bottom: 2px dotted black;
+  }
+</style>

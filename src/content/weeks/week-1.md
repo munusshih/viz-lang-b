@@ -16,6 +16,7 @@ week: 1
    1. Have you had experiences with access intimacy?
    2. How does it shape the way you think about community?
    3. How can we foster access intimacy within our peer groups and the larger class community?
+4. Finish this [Welcome Survey](https://forms.gle/C4GG7j9y6x5Jnwws6) to help me get to know you better.
 
 ## In-Class Activity
 

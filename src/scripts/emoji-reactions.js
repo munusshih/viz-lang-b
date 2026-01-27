@@ -2,7 +2,7 @@ import { getFirebaseDb } from "@/utils/firebase";
 import { onValue, ref, runTransaction } from "firebase/database";
 
 const roots = Array.from(
-  document.querySelectorAll<HTMLElement>("[data-emoji-reactions]"),
+  document.querySelectorAll("[data-emoji-reactions]"),
 );
 
 if (!roots.length) {
@@ -13,11 +13,9 @@ roots.forEach((root) => {
   const pageKey = root.dataset.pageKey || "global";
   const storageKey = `emoji-reactions:${pageKey}`;
 
-  const buttons = Array.from(
-    root.querySelectorAll<HTMLButtonElement>("[data-emoji-id]"),
-  );
+  const buttons = Array.from(root.querySelectorAll("[data-emoji-id]"));
 
-  function readLocalState(): Record<string, boolean> {
+  function readLocalState() {
     try {
       return JSON.parse(localStorage.getItem(storageKey) || "{}");
     } catch {
@@ -25,7 +23,7 @@ roots.forEach((root) => {
     }
   }
 
-  function writeLocalState(state: Record<string, boolean>) {
+  function writeLocalState(state) {
     try {
       localStorage.setItem(storageKey, JSON.stringify(state));
     } catch {
@@ -61,7 +59,7 @@ roots.forEach((root) => {
     buttons.forEach((button) => {
       const emojiId = button.dataset.emojiId || "";
       const count = data?.[emojiId] ?? 0;
-      const countEl = button.querySelector<HTMLElement>("[data-count]");
+      const countEl = button.querySelector("[data-count]");
       if (countEl) countEl.textContent = String(count);
     });
   });

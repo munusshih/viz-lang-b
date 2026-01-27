@@ -6,12 +6,23 @@ import CourseInfo from "@/components/CourseInfo.astro";
 import { SITE_DESCRIPTION, SITE_TITLE, SECTION_ID } from "@/config";
 import { getCollection } from "astro:content";
 import { marked } from "marked";
+import notebookRaw from "@/content/projects/notebook.md?raw";
 
 // Get all weeks and sort by week number
 const allWeeks = await getCollection("weeks");
 const sortedWeeks = allWeeks
   .filter((week) => week.data.page !== false)
   .sort((a, b) => a.data.week - b.data.week);
+
+function extractFirstSection(markdown: string) {
+  const matches = Array.from(markdown.matchAll(/^##\\s+/gm));
+  if (!matches.length) return markdown.trim();
+  const start = matches[0].index ?? 0;
+  const end = matches[1]?.index ?? markdown.length;
+  return markdown.slice(start, end).trim();
+}
+
+const notebookSectionHtml = marked.parse(extractFirstSection(notebookRaw));
 ---
 
 <Layout
@@ -26,6 +37,7 @@ const sortedWeeks = allWeeks
   </header>
   <main>
     <Nav />
+    <section class="project-intro" set:html={notebookSectionHtml} />
     <section class="weekly-grid">
       {
         sortedWeeks.map((week) => (
@@ -53,6 +65,33 @@ const sortedWeeks = allWeeks
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+  }
+
+  .project-intro {
+    margin-bottom: 2rem;
+  }
+
+  .project-intro :global(h2) {
+    margin-bottom: 1rem;
+  }
+
+  .project-intro :global(h3) {
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .project-intro :global(p) {
+    margin-bottom: 1rem;
+  }
+
+  .project-intro :global(ul) {
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .project-intro :global(li) {
+    margin-bottom: 0.35rem;
   }
 
   @media (max-width: 600px) {

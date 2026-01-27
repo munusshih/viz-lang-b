@@ -3,8 +3,7 @@
     <div xmlns="http://www.w3.org/1999/xhtml" style="
       width: 32px;
       height: 32px;
-      background: #000;
-      border-radius: 100%;
+      background: pink;
     "></div>
   </foreignObject>
 </svg>

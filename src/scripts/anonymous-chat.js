@@ -1,5 +1,6 @@
 import { getFirebaseDb } from "../utils/firebase.js";
 import { onChildAdded, push, ref, serverTimestamp } from "firebase/database";
+import { Filter } from "bad-words";
 
 export function initAnonymousChat() {
   const root = document.querySelector("[data-anon-chat]");
@@ -12,6 +13,7 @@ export function initAnonymousChat() {
   const form = root.querySelector("[data-anon-form]");
   const nameEl = root.querySelector("[data-anon-name]");
   const refreshBtn = root.querySelector("[data-anon-refresh]");
+  const filter = new Filter();
 
   const adjectives = [
     "Sleepy",
@@ -116,7 +118,14 @@ export function initAnonymousChat() {
     event.preventDefault();
     const input = form.querySelector("input[name='message']");
     if (!input) return;
-    const text = input.value.trim();
+    const rawText = input.value.trim();
+    if (!rawText) return;
+    if (filter.isProfane(rawText)) {
+      input.value = "";
+      input.placeholder = "Profanity detected. Please be kind!";
+      return;
+    }
+    const text = rawText;
     if (!text) return;
 
     try {

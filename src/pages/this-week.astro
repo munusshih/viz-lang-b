@@ -185,11 +185,25 @@ const processedBody = wrapH2Sections(rawHtml);
     /* don't remove markers entirely! */
   }
 
-  /* Arrows only for top-level unordered lists */
-  .week-content :global(ul > li)::marker,
-  .week-body :global(ul > li)::marker {
-    content: "→ ";
+  /* Arrows only for top-level unordered lists (iOS-safe) */
+  .week-content :global(ul),
+  .week-body :global(ul) {
+    list-style: none;
+    padding-left: 1.25rem;
+  }
+
+  .week-content :global(ul > li),
+  .week-body :global(ul > li) {
+    position: relative;
+  }
+
+  .week-content :global(ul > li)::before,
+  .week-body :global(ul > li)::before {
+    content: "\2192\FE0E";
+    position: absolute;
+    left: -1.25rem;
     font-weight: 400;
+    font-family: "Comfortaa", sans-serif;
   }
 
   /* Ensure top-level ol uses decimal */

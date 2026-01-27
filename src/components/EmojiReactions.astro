@@ -1,7 +1,7 @@
 ---
 interface EmojiDef {
   id: string;
-  label: string;
+  label: any;
   text: string;
 }
 
@@ -9,14 +9,20 @@ interface Props {
   pageKey: string;
 }
 
+import Flame from "@lucide/astro/icons/flame";
+import Brain from "@lucide/astro/icons/brain";
+import Briefcase from "@lucide/astro/icons/briefcase";
+import BookOpen from "@lucide/astro/icons/book-open";
+import CircleQuestionMark from "@lucide/astro/icons/circle-question-mark";
+
 const { pageKey } = Astro.props;
 
 const emojiDefs: EmojiDef[] = [
-  { id: "inspired", label: "❤️‍🔥", text: "Inspired" },
-  { id: "brainy", label: "🧠", text: "Brainy" },
-  { id: "useful", label: "🧳", text: "Useful" },
-  { id: "informative", label: "📘", text: "Informative" },
-  { id: "confused", label: "😕", text: "Confused" },
+  { id: "inspired", label: Flame, text: "Inspired" },
+  { id: "brainy", label: Brain, text: "Brainy" },
+  { id: "useful", label: Briefcase, text: "Useful" },
+  { id: "informative", label: BookOpen, text: "Informative" },
+  { id: "confused", label: CircleQuestionMark, text: "Confused" },
 ];
 ---
 
@@ -26,20 +32,30 @@ const emojiDefs: EmojiDef[] = [
   </p>
   <div class="emoji-reactions__list">
     {
-      emojiDefs.map((emoji) => (
-        <button
-          type="button"
-          class="emoji-reactions__button"
-          data-emoji-id={emoji.id}
-          aria-label={`React with ${emoji.text}`}
-        >
-          <span class="emoji-reactions__emoji">{emoji.label}</span>
-          <span class="emoji-reactions__text">{emoji.text}</span>
-          <span class="emoji-reactions__count" data-count>
-            0
-          </span>
-        </button>
-      ))
+      emojiDefs.map((emoji) => {
+        const Icon = emoji.label;
+        return (
+          <button
+            type="button"
+            class="emoji-reactions__button"
+            data-emoji-id={emoji.id}
+            aria-label={`React with ${emoji.text}`}
+          >
+            <span class="emoji-reactions__emoji">
+              <Icon
+                size={18}
+                stroke-width="1.8"
+                class="emoji-reactions__icon"
+                aria-hidden="true"
+              />
+            </span>
+            <span class="emoji-reactions__text">{emoji.text}</span>
+            <span class="emoji-reactions__count" data-count>
+              0
+            </span>
+          </button>
+        );
+      })
     }
   </div>
 </section>
@@ -81,16 +97,9 @@ const emojiDefs: EmojiDef[] = [
       transform 120ms ease,
       box-shadow 120ms ease;
     cursor: pointer;
-    border: none;
+    border: 1px solid #000;
     border-radius: 999px;
     padding: 0.35rem 0.7rem;
-  }
-
-  .emoji-reactions__button:not(:last-child)::after {
-    position: absolute;
-    right: -0.6rem;
-    content: "/";
-    color: rgba(0, 0, 0, 0.45);
   }
 
   .emoji-reactions__button:hover {
@@ -104,7 +113,12 @@ const emojiDefs: EmojiDef[] = [
   }
 
   .emoji-reactions__emoji {
-    font-size: 1rem;
+    display: inline-flex;
+  }
+
+  .emoji-reactions__icon {
+    width: 18px;
+    height: 18px;
   }
 
   .emoji-reactions__text {

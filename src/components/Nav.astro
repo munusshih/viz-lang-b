@@ -4,7 +4,7 @@ const currentPath = Astro.url.pathname;
 
 <nav>
   <ul
-    class="nav-list flex flex-row justify-center gap-6 py-4 px-8 font-extrabold mb-8"
+    class="nav-list flex flex-col text-center md:text-left md:flex-row justify-center gap-2 md:gap-6 py-4 px-8 font-extrabold mb-8"
   >
     <li><a href="/" class:list={{ active: currentPath === "/" }}>Home</a></li>
     <li>

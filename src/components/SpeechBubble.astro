@@ -23,7 +23,7 @@ const { align = "center", pointDirection = "bottom-center" } = Astro.props;
     margin: auto;
     margin-top: 2rem;
     border: 2px solid #000;
-    border-radius: 20rem;
+    border-radius: 10vw;
     background: #fff;
     padding: 1.5rem 4rem;
     width: fit-content;
@@ -31,6 +31,12 @@ const { align = "center", pointDirection = "bottom-center" } = Astro.props;
     font-size: clamp(16px, 1.1vw, 22px);
     line-height: 1.5;
     font-family: "Comfortaa", sans-serif;
+  }
+
+  @media (max-width: 600px) {
+    .speech-bubble {
+      padding: 1rem 2rem;
+    }
   }
 
   .speech-bubble :global(a) {

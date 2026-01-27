@@ -3,7 +3,7 @@
 
 @font-face {
     font-family: "Belgika";
-    src: url("/fonts/belgika-5th-webfont.ttf") format("truetype");
+    src: url("/fonts/belgika-8th-webfont.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -12,7 +12,7 @@
 
 @font-face {
     font-family: "Belgika";
-    src: url("/fonts/belgika-40th-webfont.ttf") format("truetype");
+    src: url("/fonts/belgika-16th-webfont.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -94,18 +94,19 @@ ul li,
 ol li {
     font-size: clamp(16px, 1vw, 16px);
     line-height: 1.5;
+    font-weight: 600;
     @apply max-w-prose text-pretty;
     font-family: "Comfortaa", sans-serif;
 }
 
 .nav-list::before {
     content: '{';
-    @apply pr-2;
+    @apply pr-2 rotate-90 md:rotate-0;
 }
 
 .nav-list::after {
     content: '}';
-    @apply pl-2;
+    @apply pl-2 rotate-90 md:rotate-0;
 }
 
 details {
@@ -118,7 +119,8 @@ a {
 }
 
 a[href^="http"]::after {
-    content: " ↗";
+    content: " \2197\FE0E";
+    font-family: "Comfortaa", sans-serif;
 }
 
 a:hover {

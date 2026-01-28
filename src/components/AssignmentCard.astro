@@ -320,9 +320,9 @@ function getWeekLabel(title) {
     opacity: 0.8;
     cursor: pointer;
     border-radius: 50%;
-    background: white;
+    background: var(--color-white);
     padding: 0.35rem 0.5rem;
-    color: var(--color-text, #000);
+    color: var(--color-text);
     font-size: 0.875rem;
     line-height: 1;
   }
@@ -332,8 +332,8 @@ function getWeekLabel(title) {
   .pager-dot.active,
   .pager-dot[aria-selected="true"] {
     opacity: 1;
-    border-color: rgba(255, 255, 255, 0.6);
-    background: rgba(255, 255, 255, 0.12);
+    border-color: color-mix(in srgb, var(--color-white) 60%, transparent);
+    background: color-mix(in srgb, var(--color-white) 12%, transparent);
   }
 
   .credit-list {

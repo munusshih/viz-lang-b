@@ -22,9 +22,9 @@ const { align = "center", pointDirection = "bottom-center" } = Astro.props;
     position: relative;
     margin: auto;
     margin-top: 2rem;
-    border: 2px solid #000;
+    border: 2px solid var(--color-accent);
     border-radius: 10vw;
-    background: #fff;
+    background: var(--color-white);
     padding: 1.5rem 4rem;
     width: fit-content;
     max-width: 600px;
@@ -40,7 +40,7 @@ const { align = "center", pointDirection = "bottom-center" } = Astro.props;
   }
 
   .speech-bubble :global(a) {
-    border-bottom: 2px dotted black;
+    border-bottom: 2px dotted var(--color-accent);
   }
 
   /* Triangle pointer using pseudo-element */
@@ -57,7 +57,7 @@ const { align = "center", pointDirection = "bottom-center" } = Astro.props;
     bottom: -20px;
     left: 30px;
     border-width: 20px 20px 0 0;
-    border-color: #000 transparent transparent transparent;
+    border-color: var(--color-accent) transparent transparent transparent;
   }
 
   .speech-bubble-bottom-left::before {
@@ -66,7 +66,7 @@ const { align = "center", pointDirection = "bottom-center" } = Astro.props;
     left: 32px;
     border-width: 18px 18px 0 0;
     border-style: solid;
-    border-color: #fff transparent transparent transparent;
+    border-color: var(--color-white) transparent transparent transparent;
     width: 0;
     height: 0;
     content: "";
@@ -77,7 +77,7 @@ const { align = "center", pointDirection = "bottom-center" } = Astro.props;
     right: 30px;
     bottom: -20px;
     border-width: 20px 0 0 20px;
-    border-color: #000 transparent transparent transparent;
+    border-color: var(--color-accent) transparent transparent transparent;
   }
 
   .speech-bubble-bottom-right::before {
@@ -86,7 +86,7 @@ const { align = "center", pointDirection = "bottom-center" } = Astro.props;
     bottom: -16px;
     border-width: 18px 0 0 18px;
     border-style: solid;
-    border-color: #fff transparent transparent transparent;
+    border-color: var(--color-white) transparent transparent transparent;
     width: 0;
     height: 0;
     content: "";
@@ -97,7 +97,7 @@ const { align = "center", pointDirection = "bottom-center" } = Astro.props;
     top: -20px;
     left: 30px;
     border-width: 0 20px 20px 0;
-    border-color: transparent transparent #000 transparent;
+    border-color: transparent transparent var(--color-accent) transparent;
   }
 
   .speech-bubble-top-left::before {
@@ -106,7 +106,7 @@ const { align = "center", pointDirection = "bottom-center" } = Astro.props;
     left: 32px;
     border-width: 0 18px 18px 0;
     border-style: solid;
-    border-color: transparent transparent #fff transparent;
+    border-color: transparent transparent var(--color-white) transparent;
     width: 0;
     height: 0;
     content: "";
@@ -117,7 +117,7 @@ const { align = "center", pointDirection = "bottom-center" } = Astro.props;
     top: -20px;
     right: 30px;
     border-width: 0 0 20px 20px;
-    border-color: transparent transparent #000 transparent;
+    border-color: transparent transparent var(--color-accent) transparent;
   }
 
   .speech-bubble-top-right::before {
@@ -126,7 +126,7 @@ const { align = "center", pointDirection = "bottom-center" } = Astro.props;
     right: 32px;
     border-width: 0 0 18px 18px;
     border-style: solid;
-    border-color: transparent transparent #fff transparent;
+    border-color: transparent transparent var(--color-white) transparent;
     width: 0;
     height: 0;
     content: "";
@@ -138,7 +138,7 @@ const { align = "center", pointDirection = "bottom-center" } = Astro.props;
     left: 50%;
     transform: translateX(-50%);
     border-width: 20px 10px 0 10px;
-    border-color: #000 transparent transparent transparent;
+    border-color: var(--color-accent) transparent transparent transparent;
   }
 
   .speech-bubble-bottom-center::before {
@@ -148,7 +148,7 @@ const { align = "center", pointDirection = "bottom-center" } = Astro.props;
     transform: translateX(-50%);
     border-width: 18px 9px 0 9px;
     border-style: solid;
-    border-color: #fff transparent transparent transparent;
+    border-color: var(--color-white) transparent transparent transparent;
     width: 0;
     height: 0;
     content: "";
@@ -160,7 +160,7 @@ const { align = "center", pointDirection = "bottom-center" } = Astro.props;
     left: 50%;
     transform: translateX(-50%);
     border-width: 0 10px 20px 10px;
-    border-color: transparent transparent #000 transparent;
+    border-color: transparent transparent var(--color-accent) transparent;
   }
 
   .speech-bubble-top-center::before {
@@ -170,7 +170,7 @@ const { align = "center", pointDirection = "bottom-center" } = Astro.props;
     transform: translateX(-50%);
     border-width: 0 9px 18px 9px;
     border-style: solid;
-    border-color: transparent transparent #fff transparent;
+    border-color: transparent transparent var(--color-white) transparent;
     width: 0;
     height: 0;
     content: "";

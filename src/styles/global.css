@@ -22,8 +22,8 @@
 /* Smooth transition when system preference changes */
 body {
     transition: filter 0.3s ease;
-    color: #000;
-    background: pink;
+    color: var(--color-text);
+    background: var(--color-background);
     max-width: 1200px;
     margin: auto;
     @apply min-h-screen;
@@ -33,6 +33,12 @@ body {
     --margin: 1rem;
     --padding: 1rem;
     --border-dotted: 1px solid #222;
+    --color-pink: #ffc0cb;
+    --color-black: #000;
+    --color-white: #fff;
+    --color-text: var(--color-black);
+    --color-background: var(--color-pink);
+    --color-accent: var(--color-black);
 }
 
 html,
@@ -124,7 +130,7 @@ a[href^="http"]::after {
 }
 
 a:hover {
-    @apply border-b-2 border-black;
+    border-bottom: 2px solid var(--color-accent);
 }
 
 header,
@@ -153,12 +159,20 @@ body>* {
 }
 
 ::selection {
-    background: #000;
-    color: #000;
+    background: var(--color-accent);
+    color: var(--color-accent);
 }
 
 .btn-primary {
-    @apply my-2 inline-block !no-underline bg-white text-black font-bold py-2 px-4 rounded-full cursor-pointer;
+    display: inline-block;
+    margin: 0.5rem 0;
+    border-radius: 9999px;
+    background: var(--color-white);
+    padding: 0.5rem 1rem;
+    color: var(--color-text);
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 #student-page footer {

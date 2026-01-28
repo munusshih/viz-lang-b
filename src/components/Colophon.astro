@@ -30,12 +30,12 @@ const content = marked.parse(colophonRaw);
   }
 
   .colophon :global(a) {
-    border-bottom: 2px dotted black;
+    border-bottom: 2px dotted var(--color-accent);
   }
 
   .receipt {
     --zigzag-size: 12px;
-    --bg: #fff;
+    --bg: var(--color-white);
 
     background:
     /* top zig-zag */

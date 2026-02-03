@@ -10,10 +10,16 @@ interface Props {
     | "top-right";
 }
 
-const { align = "center", pointDirection = "bottom-center" } = Astro.props;
+const {
+  align = "center",
+  pointDirection = "bottom-center",
+  class: className = "",
+} = Astro.props;
 ---
 
-<div class={`speech-bubble speech-bubble-${pointDirection} text-${align}`}>
+<div
+  class={`speech-bubble speech-bubble-${pointDirection} text-${align} ${className}`.trim()}
+>
   <slot />
 </div>
 

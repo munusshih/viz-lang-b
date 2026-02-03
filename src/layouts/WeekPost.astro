@@ -1,19 +1,21 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import BaseHead from "@/components/BaseHead.astro";
+import Layout from "@/layouts/Layout.astro";
 import Footer from "@/components/Footer.astro";
 import Nav from "@/components/Nav.astro";
-import Analytics from "@vercel/analytics/astro";
-import GitHubEdit from "@/components/GitHubEdit.astro";
+import CourseInfo from "@/components/CourseInfo.astro";
+import SpeechBubble from "@/components/SpeechBubble.astro";
 import EmojiReactions from "@/components/EmojiReactions.astro";
-import { SITE_TITLE, SECTION_ID } from "@/config";
+import { SITE_DESCRIPTION, SITE_TITLE, SECTION_ID } from "@/config";
 import { marked } from "marked";
+import { wrapH2Sections } from "@/utils/processContent";
 
 type Props = CollectionEntry<"weeks">["data"] & {
   compiledContent?: () => Promise<string>;
 };
 
-const { title, description, week, longDescription } = Astro.props;
+const { title, description, week, longDescription, image, imageMeta } =
+  Astro.props;
 
 // Convert markdown to HTML using marked
 const longDescriptionHTML = longDescription
@@ -22,110 +24,196 @@ const longDescriptionHTML = longDescription
 
 // Get the compiled content from the slot and process it
 const rawContent = await Astro.slots.render("default");
-
-// Function to wrap content between h2 headings in divs
-function wrapContentSections(html: string): string {
-  // Split by h2 tags while preserving them
-  const h2Regex = /(<h2[^>]*>.*?<\/h2>)/gi;
-  const parts = html.split(h2Regex);
-
-  let result = "";
-  let currentSection = "";
-  let hasHeading = false;
-  let sectionIndex = 0;
-
-  for (let i = 0; i < parts.length; i++) {
-    const part = parts[i].trim();
-    if (!part) continue;
-
-    if (h2Regex.test(part)) {
-      // This is an h2 heading
-      if (currentSection) {
-        // Close previous section
-        const sectionClass = hasHeading
-          ? "content-section"
-          : "content-section intro-section";
-        result += `<div class="${sectionClass}">${currentSection}</div>\n`;
-      }
-
-      // Start new section with this heading
-      currentSection = part;
-      hasHeading = true;
-      sectionIndex++;
-    } else {
-      // This is content, add to current section
-      currentSection += part;
-    }
-  }
-
-  // Don't forget the last section
-  if (currentSection) {
-    const sectionClass = hasHeading
-      ? "content-section"
-      : "content-section intro-section";
-    // Extract section ID from h2 if it exists
-    let dataSection = "";
-    if (hasHeading) {
-      const h2Match = currentSection.match(/<h2[^>]*>(.*?)<\/h2>/i);
-      if (h2Match) {
-        const sectionId = h2Match[1]
-          .replace(/<[^>]*>/g, "") // Remove any HTML tags
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, "-")
-          .replace(/^-|-$/g, "");
-        dataSection = ` data-section="${sectionId}"`;
-      }
-    }
-    result += `<div class="${sectionClass}"${dataSection}>${currentSection}</div>\n`;
-  }
-
-  return result;
-}
-
-const processedContent = wrapContentSections(rawContent);
-
-// Construct the GitHub file path
-const currentPath = Astro.url.pathname.replace(/^\/|\/$/g, "");
-const githubFilePath = `src/content/weeks/${currentPath}.md`;
+const processedContent = wrapH2Sections(rawContent);
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead
-      title={`Week ${week}: ${title}`}
-      description={description}
-      image="/opengraph.jpg"
-    />
-  </head>
-  <body>
-    <header id="week-header">
-      <div>
-        <a href="/">
-          <h1 class="heading-3 !leading-normal">
-            {`${SITE_TITLE} (${SECTION_ID})`}
-          </h1>
-        </a>
-        <h2 class="heading-1">{`Week ${week}: ${title}`}</h2>
-        {
-          longDescriptionHTML && (
-            <div class="long-description" set:html={longDescriptionHTML} />
-          )
-        }
-        <nav class="weekly-schedule">
-          <Nav />
-        </nav>
-      </div>
-
-      <GitHubEdit filePath={githubFilePath} />
-    </header>
-
-    <EmojiReactions pageKey={currentPath || `week-${week}`} />
-    <main id="week-content" set:html={processedContent} />
-
-    <div class="border-t">
-      <Footer />
+<Layout
+  title={`Week ${week}: ${title} - ${SITE_TITLE}: ${SECTION_ID}`}
+  description={description || SITE_DESCRIPTION}
+>
+  <header>
+    <div class="course-info flex flex-col">
+      <CourseInfo />
+      <h1>Week {week}: {title}</h1>
     </div>
-    <Analytics />
-    <script src="/scripts/external-links.js" is:inline></script>
-  </body>
-</html>
+  </header>
+  <main>
+    <Nav />
+    <section class="this-week">
+      {
+        image && (
+          <div class="week-header flex flex-col justify-center">
+            <img
+              src={`/${image}`}
+              alt={`Illustration for Week ${week}`}
+              class="week-img"
+            />
+            {imageMeta && (
+              <SpeechBubble class="image-meta" pointDirection="top-center">
+                <div set:html={marked.parse(imageMeta)} />
+              </SpeechBubble>
+            )}
+          </div>
+        )
+      }
+      <EmojiReactions pageKey={`week-${week}`} />
+
+      {
+        longDescriptionHTML && (
+          <div class="week-content" set:html={longDescriptionHTML} />
+        )
+      }
+
+      <div class="week-body" set:html={processedContent} />
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .week-header {
+    margin-bottom: 2rem;
+    background: pink;
+  }
+
+  .week-img {
+    mix-blend-mode: multiply !important;
+  }
+
+  .week-header img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .image-meta {
+    opacity: 0.7;
+    margin-top: 0.5rem;
+    font-style: italic;
+    font-size: 0.9rem;
+  }
+
+  .week-content,
+  .week-body {
+    margin: 2rem 0;
+    line-height: 1.8;
+  }
+
+  /* Two-column layout for sections */
+  .week-body :global(.sections-container) {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .week-body :global(.content-section) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 2rem;
+    border-top: 1px solid var(--color-accent);
+    padding-top: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .week-body :global(.content-section) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+
+  .week-content :global(h2),
+  .week-body :global(h2) {
+    font-weight: 900 !important;
+    font-size: 1.75rem;
+  }
+
+  /* Left column: title */
+  .week-body :global(.content-section > h2) {
+    grid-column: 1;
+  }
+
+  /* Right column: all other content */
+  .week-body :global(.content-section > :not(h2)) {
+    grid-column: 2;
+  }
+
+  @media (max-width: 768px) {
+    .week-body :global(.content-section > :not(h2)) {
+      grid-column: 1;
+    }
+  }
+
+  .week-content :global(h3),
+  .week-body :global(h3) {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    font-size: 1.25rem;
+  }
+
+  .week-content :global(img) {
+    margin: 1.5rem 0;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .week-content :global(a),
+  .week-body :global(a) {
+    border-bottom: 2px dotted var(--color-accent);
+  }
+
+  .week-content :global(a:hover),
+  .week-body :global(a:hover) {
+    opacity: 0.7;
+  }
+
+  /* Base styles for unordered lists */
+  .week-content :global(ul),
+  .week-body :global(ul) {
+    padding-left: 1rem;
+    list-style: none;
+  }
+
+  /* Base styles for ordered lists */
+  .week-content :global(ol),
+  .week-body :global(ol) {
+    padding-left: 1rem;
+    list-style-type: decimal;
+    /* don't remove markers entirely! */
+  }
+
+  .week-content :global(ol ol),
+  .week-body :global(ol ol) {
+    padding-left: 1rem;
+    list-style-type: lower-alpha;
+    /* don't remove markers entirely! */
+  }
+
+  /* Arrows only for top-level unordered lists (iOS-safe) */
+  .week-content :global(ul),
+  .week-body :global(ul) {
+    padding-left: 1.25rem;
+    list-style: none;
+  }
+
+  .week-content :global(ul > li),
+  .week-body :global(ul > li) {
+    position: relative;
+  }
+
+  .week-content :global(ul > li)::before,
+  .week-body :global(ul > li)::before {
+    position: absolute;
+    left: -1.25rem;
+    content: "\2192\FE0E";
+    font-weight: 400;
+    font-family: "Comfortaa", sans-serif;
+  }
+
+  /* Ensure top-level ol uses decimal */
+  .week-content :global(ol > li)::marker,
+  .week-body :global(ol > li)::marker {
+    content: normal;
+    list-style-type: decimal; /* use default numbering */
+  }
+</style>

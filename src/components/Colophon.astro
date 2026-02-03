@@ -2,12 +2,21 @@
 import { marked } from "marked";
 import colophonRaw from "../content/colophon.md?raw";
 
-const content = marked.parse(colophonRaw);
+interface Props {
+  title?: string;
+  fullWidth?: boolean;
+}
+
+const { title = "Colophon", fullWidth = false } = Astro.props as Props;
+const hasSlot = Astro.slots.has("default");
+const content = hasSlot ? "" : marked.parse(colophonRaw);
 ---
 
-<section class="colophon receipt p-8 my-8 mx-4 md:mx-auto">
-  <h2>Colophon</h2>
-  <div set:html={content} />
+<section
+  class={`colophon receipt p-8 my-8 mx-4 md:mx-auto ${fullWidth ? "full-width" : ""}`.trim()}
+>
+  {title && <h2>{title}</h2>}
+  {hasSlot ? <slot /> : <div set:html={content} />}
 </section>
 
 <style>
@@ -15,6 +24,17 @@ const content = marked.parse(colophonRaw);
     margin-right: auto;
     margin-left: auto;
     max-width: 800px;
+  }
+
+  .colophon.full-width {
+    margin-right: 0;
+    margin-left: 0;
+    width: 100%;
+    max-width: none;
+  }
+
+  .colophon.full-width h2 {
+    margin-bottom: 3rem;
   }
 
   .colophon h2 {

@@ -38,4 +38,16 @@ const tutorials = defineCollection({
     }),
 });
 
-export const collections = { weeks, tutorials };
+const projects = defineCollection({
+  // Load Markdown and MDX files in the `src/content/projects/` directory.
+  loader: glob({ base: "./src/content/projects", pattern: "**/*.{md,mdx}" }),
+  // Optional frontmatter for ordering/titles.
+  schema: z.object({
+    title: z.string().optional(),
+    description: z.string().optional(),
+    order: z.number().optional(),
+    page: z.boolean().optional(),
+  }),
+});
+
+export const collections = { weeks, tutorials, projects };

@@ -1,5 +1,15 @@
 ---
+import { getCollection } from "astro:content";
+
 const currentPath = Astro.url.pathname;
+
+// Get the latest week
+const allWeeks = await getCollection("weeks");
+const sortedWeeks = allWeeks
+  .filter((week) => week.data.page !== false)
+  .sort((a, b) => a.data.week - b.data.week);
+const latestWeek = sortedWeeks[sortedWeeks.length - 1];
+const latestWeekSlug = latestWeek?.id || "week-1";
 ---
 
 <nav>
@@ -9,8 +19,9 @@ const currentPath = Astro.url.pathname;
     <li><a href="/" class:list={{ active: currentPath === "/" }}>Home</a></li>
     <li>
       <a
-        href="/this-week/"
-        class:list={{ active: currentPath === "/this-week/" }}>This Week</a
+        href={`/${latestWeekSlug}/`}
+        class:list={{ active: currentPath === `/${latestWeekSlug}/` }}
+        >This Week</a
       >
     </li>
     <!-- <li>
@@ -18,11 +29,16 @@ const currentPath = Astro.url.pathname;
         >Library</a
       >
     </li> -->
-    <!-- <li>
+    <li>
+      <a href="/schedule/" class:list={{ active: currentPath === "/schedule/" }}
+        >All Weeks</a
+      >
+    </li>
+    <li>
       <a href="/projects/" class:list={{ active: currentPath === "/projects/" }}
         >Projects</a
       >
-    </li> -->
+    </li>
     <!-- <li>
       <a
         href="/collectives/"

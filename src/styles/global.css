@@ -196,3 +196,28 @@ body>* {
     font-size: 1rem;
     white-space: nowrap;
 }
+
+.assignment {
+    background: var(--color-text);
+    color: var(--color-background);
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    cursor: pointer;
+}
+
+.assignment:hover {
+    color: var(--color-text);
+    background: var(--color-background);
+    border: 2px solid var(--color-text);
+}
+
+
+.weekly-list {
+    @apply grid lg:grid-cols-2 gap-12;
+}
+
+
+.week-card:nth-child(odd) {
+    @apply border-b !pb-10 lg:border-b-0 lg:border-r-2 border-dashed;
+
+}

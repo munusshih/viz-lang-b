@@ -7,155 +7,108 @@ import { SITE_DESCRIPTION, SITE_TITLE, SECTION_ID } from "@/config";
 import { getCollection } from "astro:content";
 import { marked } from "marked";
 
-// Get all weeks and sort by week number
+// Get all weeks and sort by week number (older first, newer lower on the page)
 const allWeeks = await getCollection("weeks");
 const sortedWeeks = allWeeks
-  .filter((week) => week.data.page !== false)
+  .filter((week) => week.data.week !== 0 && week.data.page !== false)
   .sort((a, b) => a.data.week - b.data.week);
-
-// Get the latest week (highest week number)
-const latestWeek = sortedWeeks[sortedWeeks.length - 1];
 ---
 
 <Layout
-  title={`This Week - ${SITE_TITLE}: ${SECTION_ID}`}
+  title={`All Weeks - ${SITE_TITLE}: ${SECTION_ID}`}
   description={SITE_DESCRIPTION}
 >
   <header>
     <div class="course-info flex flex-col">
       <CourseInfo />
-      <h1>This Week</h1>
+      <h1>All Weeks</h1>
     </div>
   </header>
   <main>
     <Nav />
-    {
-      latestWeek && (
-        <section class="this-week">
-          <div class="week-header">
-            <div class="week-number">Week {latestWeek.data.week}</div>
-            <h2 class="week-title">{latestWeek.data.title}</h2>
-          </div>
-
-          {latestWeek.data.longDescription && (
-            <div
-              class="week-content"
-              set:html={marked.parse(latestWeek.data.longDescription)}
-            />
-          )}
-
-          <div class="week-link-container">
-            <a href={`/${latestWeek.id}/`} class="view-full-link">
-              View Full Week Details →
+    <section class="weekly-list">
+      {
+        sortedWeeks.map((week) => (
+          <article class="week-card">
+            <a href={`/${week.id}/`} class="week-link">
+              <div class="week-number">Week {week.data.week}</div>
+              <h2 class="week-title">{week.data.title}</h2>
+              {week.data.image && (
+                <div class="week-media">
+                  <img
+                    src={`/${week.data.image}`}
+                    alt={`Illustration for Week ${week.data.week}`}
+                    loading="lazy"
+                  />
+                </div>
+              )}
+              {(week.data.description || week.data.longDescription) && (
+                <div
+                  class="week-description"
+                  set:html={marked.parse(
+                    week.data.description || week.data.longDescription || "",
+                  )}
+                />
+              )}
             </a>
-          </div>
-        </section>
-      )
-    }
+          </article>
+        ))
+      }
+    </section>
   </main>
   <Footer />
 </Layout>
 
 <style>
-  .this-week {
-    margin: 0 auto;
-    max-width: 900px;
+  .week-card {
+    transition: all 0.2s ease;
+    padding: 0rem 0rem;
   }
 
-  .week-header {
-    margin-bottom: 2rem;
-    border-bottom: 2px solid var(--color-accent);
-    padding-bottom: 1rem;
+  .week-card:hover {
+    transform: translateY(-2px);
+    background: color-mix(in srgb, var(--color-pink) 20%, transparent);
+  }
+
+  .week-link:hover {
+    display: block;
+    border: 0;
+    color: inherit;
+    text-decoration: none;
   }
 
   .week-number {
     opacity: 0.5;
     margin-bottom: 0.5rem;
     font-weight: 700;
-    font-size: 1rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    font-size: 0.875rem;
   }
 
   .week-title {
-    margin: 0;
-    font-weight: 700;
-    font-size: 2.5rem;
-    line-height: 1.2;
-  }
-
-  .week-content {
-    font-size: 1.05rem;
-    line-height: 1.8;
-  }
-
-  .week-content :global(h2) {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-    font-size: 1.75rem;
-  }
-
-  .week-content :global(h3) {
-    margin-top: 1.5rem;
     margin-bottom: 0.75rem;
-    font-weight: 600;
-    font-size: 1.25rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.3;
   }
 
-  .week-content :global(img) {
-    margin: 1.5rem 0;
-    border-radius: 4px;
-    max-width: 100%;
+  .week-media {
+    margin: 1rem 0;
+  }
+
+  .week-media img {
+    display: block;
+    max-width: 60%;
     height: auto;
   }
 
-  .week-content :global(a) {
-    color: #0066cc;
-    text-decoration: underline;
-  }
-
-  .week-content :global(a:hover) {
-    opacity: 0.7;
-  }
-
-  .week-content :global(ul) {
-    margin: 1rem 0;
-    padding-left: 1.5rem;
-  }
-
-  .week-content :global(li) {
-    margin: 0.5rem 0;
-  }
-
-  .week-link-container {
-    margin-top: 3rem;
-    border-top: 1px solid #ddd;
-    padding-top: 2rem;
-  }
-
-  .view-full-link {
-    display: inline-block;
-    transition: opacity 0.2s ease;
-    border-radius: 4px;
-    background: var(--color-accent);
-    padding: 0.75rem 1.5rem;
-    color: var(--color-white);
-    font-weight: 600;
-    text-decoration: none;
-  }
-
-  .view-full-link:hover {
+  .week-description {
     opacity: 0.8;
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
-  @media (max-width: 768px) {
-    .week-title {
-      font-size: 2rem;
-    }
-
-    .week-content {
-      font-size: 1rem;
-    }
+  .week-description :global(a) {
+    color: inherit;
+    text-decoration: underline;
   }
 </style>

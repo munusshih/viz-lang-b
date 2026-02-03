@@ -1,4 +1,4 @@
-I would like to warmly acknowledge [kimi malka hanauer](https://kimihanauer.com) and [Asad Pervaiz](https://oldthingsnewplaces.com/), whose
+I would like to warmly acknowledge [kimi malka hanauer](https://kimihanauer.com), [Asad Pervaiz](https://oldthingsnewplaces.com/) and [Frances Pharr](https://francespharr.com/), whose
 generous pedagogical practices and original curriculum design have deeply
 shaped the structure and spirit of this course. This syllabus grows out of
 shared teaching lineages, ongoing dialogue, and collective ways of learning

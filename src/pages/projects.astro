@@ -101,4 +101,12 @@ const renderedProjects = await Promise.all(
     margin-bottom: 2.5rem;
     border: 1px solid rgba(0, 0, 0, 0.1);
   }
+
+  .projects-list :global(img + p),
+  .projects-list :global(p:has(img)) {
+    opacity: 0.7;
+    margin-top: -1.75rem;
+    padding-left: 2rem;
+    font-size: 0.8rem;
+  }
 </style>

@@ -5,7 +5,6 @@ description: "Throughout the semester, you are expected to keep a notebook or on
 ---
 
 ![alt text](/assets/projects/notebook.png)
-<br>
 This is a screenshot taken from Simone Forti's [Handbook in Motion](https://drive.google.com/file/d/1GbvQ3lbc2ewvFoI6_0AjTq5R9CZdhFI-/view?usp=sharing), a collection of her dance scores and notes compiled between 1961 and 2008.
 
 Your notebook should aggregate materials such as:

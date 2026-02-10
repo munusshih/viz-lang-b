@@ -114,6 +114,10 @@ const processedContent = wrapH2Sections(rawContent);
     padding-top: 2rem;
   }
 
+  .week-body :global(.content-section hr) {
+    border: 1px dashed var(--color-accent);
+  }
+
   @media (max-width: 768px) {
     .week-body :global(.content-section) {
       grid-template-columns: 1fr;
@@ -165,6 +169,11 @@ const processedContent = wrapH2Sections(rawContent);
   .week-content :global(a:hover),
   .week-body :global(a:hover) {
     opacity: 0.7;
+  }
+
+  .week-body :global(li),
+  .week-body :global(ol > li > ol > li:first-child) {
+    margin-top: 1rem;
   }
 
   /* Base styles for unordered lists */

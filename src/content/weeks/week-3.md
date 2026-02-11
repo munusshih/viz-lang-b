@@ -20,7 +20,7 @@ Finish filling out the form by Friday 2/13, 2026 11:59pm. Fail to finish it befo
 2. Write at least a one-page reflection after watching the video. Consider the following prompts to guide your reflection:
    1. When the author says “publishing has always been political,” what does that mean?
    2. What makes publishing “urgent”?
-   3. The author argues we should look “after the artist’s book” and focus on platforms and acts (spreadsheets, toolkits, memes, protest signs, livestreams). What do you think should “count” as publishing in 2026—and what shouldn’t? Why?
+   3. The author argues we should look “after the artist’s book” and focus on platforms and acts (spreadsheets, toolkits, memes, protest signs, livestreams). What do you think what else besides traditional books should “count” as publishing in 2026 and what shouldn’t? Why?
 
 ## In-Class Activity
 

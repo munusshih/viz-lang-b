@@ -1,6 +1,6 @@
 ---
 title: "Generosity as a Tool"
-order: 1
+order: 2
 description: "Design a design artifact based on the concept of generosity as a tool for building community and fostering togetherness."
 ---
 

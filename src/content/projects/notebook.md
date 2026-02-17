@@ -1,6 +1,6 @@
 ---
 title: "Personal Reflection Notebook"
-order: 2
+order: 3
 description: "Throughout the semester, you are expected to keep a notebook or one centralized place to house all of the reflection writing, creative processing, in-class activities, and external reading and research notes. You will use your notebook as source material for your group projects as well as your final reflection at the end of the semester."
 ---
 

@@ -39,6 +39,7 @@ Image from [First thing first manifesto](https://eyeondesign.aiga.org/why-ken-ga
 - What shared commitments guide your collective (e.g., mutual aid, transparency, care, anti-racism, access, experimentation, consent, refusal)?
 - For each value, describe what it looks like in practice: how you make decisions, communicate, share labor, handle conflict, and support participation.
 - What working agreements will help each member participate at their best (capacity, schedules, boundaries, credit, tools, accessibility needs)?
+- How do want to work together? What are some of the ways you can support each other and hold each other accountable to the values and commitments you have outlined? Consider how you can create a culture of care, respect, and collaboration within your collective.
 
 <br/>
 

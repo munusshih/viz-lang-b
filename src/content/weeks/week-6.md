@@ -1,8 +1,8 @@
 ---
 title: "No Hunger Artist! No Sellout!"
 description: "This week we will go over the history of the Great Depression and the New Deal, and discuss how artists and creative workers can sustain themselves in a capitalist economy. We will also look at the role of art and design in social movements and how they can be used to create change."
-image: "assets/week6.png"
-imageMeta: ""
+image: "assets/week6-1.png"
+imageMeta: "The image is a poster from the [WPA (Works Progress Administration)](https://www.loc.gov/pictures/search/?st=grid&co=wpapos) era, which was a New Deal agency that provided jobs for unemployed Americans during the Great Depression. The posters were designed to promote various public works projects and social programs, and often featured bold, graphic designs and optimistic messages. They were heavily influenced by the Constructivist art movement, which emphasized the use of geometric shapes and bold colors to create dynamic compositions."
 week: 6
 ---
 

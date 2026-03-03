@@ -12,7 +12,10 @@ week: 6
 
 <a class="assignment" href="https://forms.gle/a7zhbJjenn9T9ahx9">Submit Here</a>
 
-1. Take inspirations from all the visual cultures we've seen in class, discuss within your group and revise your [Collective Proposal (read more here)](../projects) one last time into artifacts (Posters, Zines, Websites...). Only one of you needs to submit the proposal on behalf of your group, but make sure to include all group members' names in the submission form. Please bring all the artifacts and materials to class, and prepare to share them with your peers. We will have a mini exhibition in class to showcase everyone's work and reflect on the process of creating a collective proposal.
+1. Take inspirations from all the visual cultures we've seen in class, discuss within your group and revise your [Collective Proposal (read more here)](../projects) one last time into artifacts (Posters, Zines, Websites...).
+   1. Think about how you can use design and visual communication to effectively convey your message and engage your audience. What best represents your proposal? What kind of visual language can you use to make it more compelling and memorable? Make sure this is a collective effort, and that everyone in your group contributes to the creation of the artifacts, and that the final product reflects the ideas and perspectives of all group members.
+   2. Only one of you needs to submit the proposal on behalf of your group, but make sure to include all group members' names in the submission form. Please bring all the artifacts and materials to class, and prepare to share them with your peers.
+   3. We will have a mini exhibition in class to showcase everyone's work and reflect on the process of creating a collective proposal.
 2. Read [Work (Even the Creative Kind) Won’t Love You Back](https://hyperallergic.com/work-wont-love-you-back-sarah-jaffee/) and reflect on the following questions in your personal notebook, and preapre to discuss them in class:
    1. Do you agree with the author’s argument that the idea of “doing what you love” can be harmful to creative workers? Why or why not?
    2. How does the expectation of passion and fulfillment in creative work affect the mental health and well-being of artists and other creative workers?

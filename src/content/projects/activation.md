@@ -8,7 +8,7 @@ description: "Design an engagement that activates collective action and engageme
 
 After forming our artist/designer collective, we will design an engagement that activates collective action and engagement. This project is an opportunity to experiment with how we can use design to foster connection, participation, and collective action. The engagement you design should be rooted in the values and intentions of your collective, and should encourage others to participate in a meaningful way.
 
-The project is in 4 parts.
+The project is in 5 parts.
 
 <br>
 
@@ -39,7 +39,18 @@ Consider alternative ways to engage people beyond traditional methods, for examp
 
 When designing your engagement, consider how you can make it accessible and inclusive for a diverse range of participants. Think about the different ways people might want to engage with your project, and design for those different modes of participation. Consider how you can create a welcoming and supportive environment that encourages people to participate and feel like they belong.
 
-# 3–Document the Process
+# 3-Infrastructure
+
+<br>
+<div class="due-date">Due: March 24, 2026</div>
+
+What kind of infrastructure do you need to support your engagement? Consider the resources, tools, and support you need to design and execute your engagement. Think about how you can build infrastructure that supports your collective and sustains your work over time.
+
+Survey and research what spaces, resources, tools and support you have access to and how you can leverage those to support your engagement. If you need additional resources, think about how you can build partnerships or collaborations with other organizations or collectives that can provide the support you need.
+
+Bring these reflections to class to share with your peers and get feedback on your ideas. We will also discuss how to build infrastructure to support your engagement and sustain it over time, and look at examples of artists' labor movements and how they have fought for fair compensation and better working conditions. This will be an opportunity to learn from the experiences of others and think about how you can apply those lessons to your own work.
+
+# 4–Document the Process
 
 <br>
 <div class="due-date">Due: March 31, 2026</div>
@@ -48,7 +59,7 @@ How can you document your process and the impact of your engagement? Consider ho
 
 If you're creating an online experience, will you create a specific hashtag for people to share their experiences? If it's a public engagement, will you record a timelapse video of the event? If it's a workshop, will you create a zine or booklet that captures the key takeaways and reflections from the participants? Consider how you can use documentation to amplify the impact of your engagement and inspire others to take action.
 
-# 4–Reflection
+# 5–Reflection
 
 <br>
 <div class="due-date">Due: April 7, 2026</div>

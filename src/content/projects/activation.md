@@ -39,7 +39,7 @@ Consider alternative ways to engage people beyond traditional methods, for examp
 
 When designing your engagement, consider how you can make it accessible and inclusive for a diverse range of participants. Think about the different ways people might want to engage with your project, and design for those different modes of participation. Consider how you can create a welcoming and supportive environment that encourages people to participate and feel like they belong.
 
-# 3-Infrastructure
+# 3-Infra-structure
 
 <br>
 <div class="due-date">Due: March 24, 2026</div>

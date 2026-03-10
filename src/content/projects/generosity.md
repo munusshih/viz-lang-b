@@ -1,8 +1,10 @@
 ---
 title: "Generosity as a Tool"
-order: 2
+order: 4
 description: "Design a design artifact based on the concept of generosity as a tool for building community and fostering togetherness."
 ---
+
+<div class="due-date">Due: Feb 10, 2026</div>
 
 A community does not need to be permanent. A brief shared situation, such as people gathering, coordinating, or participating in a common gesture, can already constitute a community. When generosity is intentionally designed as a gift, service, or offering, it can give rise to a temporal community that exists through participation.
 

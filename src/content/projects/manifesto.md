@@ -1,10 +1,12 @@
 ---
 title: "Collective Proposal"
-order: 1
+order: 3
 description: "You will work in groups of 3 to create a collective proposal that includes a name, values, manifesto, and individual roles. This proposal will serve as the foundation for your group project and will be shared with the class."
 ---
 
-The project is in 4 parts.
+<div class="due-date">Due: March 10, 2026</div>
+
+The project is in 4 parts. This assignment is originally designed by Professor [kimi malka hanauer](https://kimihanauer.com/). The language has been revised here.
 
 <br>
 

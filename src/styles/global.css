@@ -96,6 +96,11 @@ p,
     font-family: "Comfortaa", sans-serif;
 }
 
+strong,
+b {
+    font-weight: 900;
+}
+
 ul li,
 ol li {
     font-size: clamp(16px, 1vw, 16px);
@@ -220,6 +225,15 @@ body>* {
     border: 2px solid var(--color-text);
 }
 
+.due-date {
+    display: inline-block;
+    border: 2px solid var(--color-text);
+    padding: 0.25rem 0.75rem;
+    margin: 0.5rem 0 1rem 0;
+    font-weight: 900;
+    font-size: 1rem;
+    font-family: "Comfortaa", sans-serif;
+}
 
 .weekly-list {
     @apply grid lg:grid-cols-2 gap-12;

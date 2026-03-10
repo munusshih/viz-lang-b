@@ -8,7 +8,7 @@ week: 1
 
 ## Assignment
 
-**Due:** Feb 3, 2026
+<div class="due-date">Due: Feb 3, 2026</div>
 
 1. Prepare a physical notebook you like as your self-reflection journal for this course. Throughout the semester, you are expected to keep a notebook or one centralized place to house all of the reflection writing, creative processing, in-class activities, and external reading and research notes. You will use your notebook as source material for your group projects as well as your final reflection at the end of the semester. It can be any size or style, as long as you feel comfortable using it regularly. Bring it to class.
 2. Read [Access Intimacy: The Missing Link](https://leavingevidence.wordpress.com/2011/05/05/access-intimacy-the-missing-link/) by Mia Mingus.

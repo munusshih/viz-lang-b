@@ -8,7 +8,7 @@ week: 5
 
 ## Assignment
 
-**Due:** March 3, 2026
+<div class="due-date">Due: March 3, 2026</div>
 
 <a class="assignment" href="https://forms.gle/a7zhbJjenn9T9ahx9">Submit Here</a>
 

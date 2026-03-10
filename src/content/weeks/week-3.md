@@ -8,7 +8,7 @@ week: 3
 
 ## Assignment
 
-**Due:** Feb 17, 2026
+<div class="due-date">Due: Feb 17, 2026</div>
 
 Finish filling out the form by Friday 2/13, 2026 11:59pm. Fail to finish it before, you will be randomly assigned a groupmate.
 

@@ -1,6 +1,6 @@
 ---
 title: "Mutual Aid and Trading Resources"
-description: ""
+description: "In this week, we will be exploring the concept of mutual aid and trading resources as a form of collective action."
 image: "assets/week9.png"
 imageMeta: "[playhtml](https://playhtml.fun/) is a library built by Taiwanese American artist [Spencer Chang](https://spencer.place/) that lets you create multiplayer web experiences without needing to write any backend code. An example of how artists are building infrastructure to support collective action and engagement."
 week: 9

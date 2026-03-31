@@ -1,6 +1,6 @@
 ---
 title: "Collective Activation"
-order: 1
+order: 2
 description: "Design an engagement that activates collective action and engagement."
 ---
 

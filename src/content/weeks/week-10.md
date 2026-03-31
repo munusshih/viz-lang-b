@@ -12,7 +12,7 @@ week: 10
 
 <a class="assignment" href="https://forms.gle/a7zhbJjenn9T9ahx9">Submit Here</a>
 
-1. We are continue to develop our Collective [Activation](../projects), and will start designing our collective doc as well. For this week, please finish your designed engagement and start documenting your process on the fourth part of the project: Document the Process and writing out Reflection.
+1. We are going to continue to develop our Collective [Activation](../projects), and will start designing our collective doc as well. For this week, please finish your designed engagement and start documenting your process on the fourth part of the project: Document the Process and writing out Reflection.
 2. Please also start drafting and designing your [Collective Doc](../projects/) as well. The collective doc is the final project of the semester, and we will spend the next four weeks working on it. For this week, please start drafting the content and planning the content of your collective doc. What format will your collective doc take? What content will you include in it? How will you design it to be engaging and impactful? You can use any format you like to document your process, such as photos, videos or written reflections. The important thing is to share your experience of forming a collective in class and share what you have learned from this experience.
 
 ## In-Class Activity

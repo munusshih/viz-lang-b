@@ -21,23 +21,6 @@ const weeks = defineCollection({
     }),
 });
 
-const tutorials = defineCollection({
-  // Load Markdown and MDX files in the `src/content/tutorials/` directory.
-  loader: glob({ base: "./src/content/tutorials", pattern: "**/*.{md,mdx}" }),
-  // Type-check frontmatter using a schema
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      description: z.string().optional(), // Optional description
-      difficulty: z.enum(["beginner", "intermediate", "advanced"]).optional(), // Difficulty level
-      duration: z.string().optional(), // Estimated duration (e.g., "30 minutes")
-      tags: z.array(z.string()).optional(), // Tags for categorization
-      publishDate: z.date().optional(), // Publication date
-      heroImage: image().optional(),
-      order: z.number().optional(), // Optional ordering for tutorials
-    }),
-});
-
 const projects = defineCollection({
   // Load Markdown and MDX files in the `src/content/projects/` directory.
   loader: glob({ base: "./src/content/projects", pattern: "**/*.{md,mdx}" }),
@@ -50,4 +33,4 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { weeks, tutorials, projects };
+export const collections = { weeks, projects };

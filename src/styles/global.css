@@ -212,11 +212,15 @@ body>* {
 }
 
 .assignment {
+    display: inline-flex;
+    width: max-content;
+    align-items: center;
     background: var(--color-text);
     color: var(--color-background);
     padding: 0.5rem 1rem;
     border-radius: 9999px;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .assignment:hover {
@@ -233,6 +237,29 @@ body>* {
     font-weight: 900;
     font-size: 1rem;
     font-family: "Comfortaa", sans-serif;
+}
+
+.feedback-questions {
+    margin-top: 1rem;
+}
+
+.feedback-questions>li {
+    margin-top: 0;
+    margin-bottom: 2.5rem;
+}
+
+.feedback-questions>li:last-child {
+    margin-bottom: 0;
+}
+
+.feedback-questions>li>.due-date {
+    margin: 0;
+}
+
+.feedback-questions>li::marker {
+    font-size: 1.5rem;
+    font-weight: 900;
+    font-family: "Belgika", serif;
 }
 
 .weekly-list {

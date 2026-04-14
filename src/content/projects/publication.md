@@ -4,7 +4,7 @@ order: 1
 description: "We will spend the four week publishing everything we have done as a collective doc, and share it with the public."
 ---
 
-<div class="due-date">Due: April 21, 2026</div>
+<div class="due-date">Due: Apr 28, 2026</div>
 
 We will spend the next four weeks publishing everything we have done as a collective doc, and share it with the public. This is an opportunity to reflect on our work, share our process and impact with others, and create a lasting record of our collective action and engagement.
 

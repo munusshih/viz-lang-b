@@ -1,4 +1,34 @@
-<section class="anon-chat" data-anon-chat>
+---
+interface Props {
+  roomId?: string;
+  title?: string;
+  note?: string;
+  placeholder?: string;
+  class?: string;
+}
+
+const {
+  roomId,
+  title,
+  note,
+  placeholder = "Type a message",
+  class: className,
+} = Astro.props;
+---
+
+<section
+  class:list={["anon-chat", className]}
+  data-anon-chat
+  data-anon-room-id={roomId}
+>
+  {
+    (title || note) && (
+      <div class="anon-chat__header">
+        {title && <h3>{title}</h3>}
+        {note && <p class="anon-chat__note">{note}</p>}
+      </div>
+    )
+  }
   <div class="anon-chat__meta">
     <span>Your username:</span>
     <strong data-anon-name>...</strong> /
@@ -12,7 +42,7 @@
     <input
       type="text"
       name="message"
-      placeholder="Type a message"
+      placeholder={placeholder}
       autocomplete="off"
       maxlength="240"
       required
@@ -41,7 +71,8 @@
     font-family: "Comfortaa", sans-serif;
   }
 
-  .anon-chat__header h2 {
+  .anon-chat__header h2,
+  .anon-chat__header h3 {
     margin-bottom: 0.35rem;
     font-size: 1.5rem;
   }
@@ -110,9 +141,27 @@
     color: var(--color-white);
   }
 
+  .anon-chat--nested {
+    margin: 0 0 0.5rem;
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .anon-chat--nested .anon-chat__messages {
+    height: 180px;
+  }
+
+  .anon-chat--nested .anon-chat__meta {
+    margin-top: 0;
+  }
+
   @media (max-width: 640px) {
     .anon-chat {
       margin: 1.5rem 1rem;
+    }
+
+    .anon-chat--nested {
+      margin: 0 0 0.5rem;
     }
 
     .anon-chat__meta {

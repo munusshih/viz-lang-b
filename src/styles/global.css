@@ -201,11 +201,22 @@ body>* {
     padding: 0.2rem 0;
 }
 
+.anon-chat__message-main {
+    min-width: 0;
+}
+
 .anon-chat__message strong {
     font-weight: 700;
 }
 
-.anon-chat__message span {
+.anon-chat__message-body {
+    opacity: 0.75;
+    font-size: 1rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.anon-chat__message-time {
     opacity: 0.75;
     font-size: 1rem;
     white-space: nowrap;

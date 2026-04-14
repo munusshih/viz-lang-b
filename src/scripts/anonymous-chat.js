@@ -163,8 +163,10 @@ function appendMessage(messagesEl, data) {
   const title = document.createElement("strong");
   title.textContent = data.name || "anonymous";
   const body = document.createElement("span");
+  body.className = "anon-chat__message-body";
   body.textContent = `: ${data.text || ""}`;
   const meta = document.createElement("span");
+  meta.className = "anon-chat__message-time";
   if (data.createdAt) {
     const time = new Date(data.createdAt).toLocaleTimeString([], {
       hour: "2-digit",

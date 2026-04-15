@@ -190,13 +190,16 @@ function initChatRoot(root) {
   const messagesEl = root.querySelector("[data-anon-messages]");
   const form = root.querySelector("[data-anon-form]");
   const refreshBtn = root.querySelector("[data-anon-refresh]");
+  const canWrite = root.dataset.anonCanWrite !== "false";
   const roomId = root.dataset.anonRoomId || "";
 
   syncNameDisplays();
 
-  refreshBtn?.addEventListener("click", () => {
-    setName(randomName());
-  });
+  if (canWrite) {
+    refreshBtn?.addEventListener("click", () => {
+      setName(randomName());
+    });
+  }
 
   let db;
   try {
@@ -221,32 +224,34 @@ function initChatRoot(root) {
     appendMessage(messagesEl, data);
   });
 
-  form?.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    const input = form.querySelector("input[name='message']");
-    if (!input) return;
+  if (canWrite && form) {
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const input = form.querySelector("input[name='message']");
+      if (!input) return;
 
-    const rawText = input.value.trim();
-    if (!rawText) return;
-    if (filter.isProfane(rawText)) {
-      input.value = "";
-      input.placeholder = "Profanity detected. Please be kind!";
-      return;
-    }
+      const rawText = input.value.trim();
+      if (!rawText) return;
+      if (filter.isProfane(rawText)) {
+        input.value = "";
+        input.placeholder = "Profanity detected. Please be kind!";
+        return;
+      }
 
-    try {
-      await push(chatRef, {
-        name: getName(),
-        text: rawText,
-        createdAt: Date.now(),
-        roomId: roomId || "homepage",
-        serverAt: serverTimestamp(),
-      });
-      input.value = "";
-    } catch (error) {
-      console.warn("Failed to send message:", error);
-    }
-  });
+      try {
+        await push(chatRef, {
+          name: getName(),
+          text: rawText,
+          createdAt: Date.now(),
+          roomId: roomId || "homepage",
+          serverAt: serverTimestamp(),
+        });
+        input.value = "";
+      } catch (error) {
+        console.warn("Failed to send message:", error);
+      }
+    });
+  }
 }
 
 export function initAnonymousChat() {

@@ -3,7 +3,8 @@ import { glob } from "astro/loaders";
 
 const weeks = defineCollection({
   // Load Markdown and MDX files in the `src/content/weeks/` directory.
-  loader: glob({ base: "./src/content/weeks", pattern: "**/*.{md,mdx}" }),
+  // Files prefixed with `_` are treated as drafts and excluded from the collection.
+  loader: glob({ base: "./src/content/weeks", pattern: ["**/*.{md,mdx}", "!**/_*.{md,mdx}"] }),
   // Type-check frontmatter using a schema
   schema: ({ image }) =>
     z.object({
